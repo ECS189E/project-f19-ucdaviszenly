@@ -1,0 +1,6 @@
+
+target 'zenly' do
+  pod 'PhoneNumberKit'
+end
+
+workspace 'zenly'
