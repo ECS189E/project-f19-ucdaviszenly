@@ -1,6 +1,7 @@
-
+source 'https://github.com/CocoaPods/Specs.git'
 target 'zenly' do
   pod 'PhoneNumberKit'
+  pod 'GoogleMaps'
 end
 
 workspace 'zenly'

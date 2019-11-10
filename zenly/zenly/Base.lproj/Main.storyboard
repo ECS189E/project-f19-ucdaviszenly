@@ -296,15 +296,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJf-IR-mao">
-                                <rect key="frame" x="302" y="44" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ucE-Jd-Fxa" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qr8-8E-IDL">
+                                <rect key="frame" x="0.0" y="778" width="375" height="0.0"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfq-Ia-8jD">
+                                <rect key="frame" x="157.66666666666666" y="708" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="YOD-9F-sSr"/>
+                                    <constraint firstAttribute="width" constant="60" id="ZNW-lu-nOV"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="address"/>
+                                <connections>
+                                    <action selector="pinPressed:" destination="688-9k-NNm" eventType="touchUpInside" id="dhK-cN-AYO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="MJf-IR-mao" firstAttribute="top" secondItem="JBh-hf-D62" secondAttribute="topMargin" constant="-44" id="FRH-xR-nzM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="MJf-IR-mao" secondAttribute="trailing" constant="11" id="Ky6-yF-aDg"/>
+                            <constraint firstItem="qr8-8E-IDL" firstAttribute="top" secondItem="hfq-Ia-8jD" secondAttribute="bottom" constant="10" id="Gom-S2-lXt"/>
+                            <constraint firstItem="ucE-Jd-Fxa" firstAttribute="bottom" secondItem="8AN-SJ-1iD" secondAttribute="bottom" id="IBq-Mc-dlC"/>
+                            <constraint firstItem="qr8-8E-IDL" firstAttribute="trailing" secondItem="8AN-SJ-1iD" secondAttribute="trailing" id="ROP-rJ-83b"/>
+                            <constraint firstItem="ucE-Jd-Fxa" firstAttribute="trailing" secondItem="8AN-SJ-1iD" secondAttribute="trailing" id="Req-7p-YZf"/>
+                            <constraint firstItem="ucE-Jd-Fxa" firstAttribute="leading" secondItem="8AN-SJ-1iD" secondAttribute="leading" id="S5D-M7-BVq"/>
+                            <constraint firstItem="qr8-8E-IDL" firstAttribute="leading" secondItem="8AN-SJ-1iD" secondAttribute="leading" id="ToJ-LF-ziJ"/>
+                            <constraint firstItem="hfq-Ia-8jD" firstAttribute="centerX" secondItem="JBh-hf-D62" secondAttribute="centerX" id="XMF-qT-HNh"/>
+                            <constraint firstItem="qr8-8E-IDL" firstAttribute="bottom" secondItem="8AN-SJ-1iD" secondAttribute="bottom" id="aSc-Lv-42J"/>
+                            <constraint firstItem="ucE-Jd-Fxa" firstAttribute="top" secondItem="8AN-SJ-1iD" secondAttribute="top" id="wbb-aZ-H0s"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8AN-SJ-1iD"/>
                     </view>
@@ -316,7 +342,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addressLabel" destination="qr8-8E-IDL" id="yEu-eU-rsZ"/>
+                        <outlet property="getLocationButton" destination="hfq-Ia-8jD" id="I8N-yK-Ih5"/>
                         <outlet property="logOut" destination="W7M-Ub-EU3" id="eTT-HU-o5m"/>
+                        <outlet property="mapView" destination="ucE-Jd-Fxa" id="Lkl-yd-rRO"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="logout" id="neI-A2-DMQ"/>
                     </connections>
                 </viewController>
@@ -361,6 +390,9 @@
             <point key="canvasLocation" x="3087" y="28"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="address" width="170.66667175292969" height="170.66667175292969"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jeJ-JD-7A3"/>
         <segue reference="neI-A2-DMQ"/>

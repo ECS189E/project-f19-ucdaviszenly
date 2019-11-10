@@ -6,67 +6,91 @@
 	objectVersion = 51;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 46921981F609C5BA3CB72EC4EA41299D /* Build configuration list for PBXAggregateTarget "GoogleMaps" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = GoogleMaps;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		0A147D1E6D84CA1ACEFE5F081B13554A /* PartialFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D566AFE09504B2201A92644DD4705 /* PartialFormatter.swift */; };
-		0F2111721B7CA27A7C4C59E57D6A6E5D /* PhoneNumberKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A54B8F46B154765842253F61DA5995 /* PhoneNumberKit.swift */; };
-		2AD28ECBC5247BDBEC56A87EFA2DB523 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CD64A2B49C78308FE3B26A8102ACB7 /* TextField.swift */; };
-		34D4C9918CD4AC8E684F6E71C4C383E2 /* Pods-zenly-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 07666F78229BAF470D43C69BB6D8E2A9 /* Pods-zenly-dummy.m */; };
-		39584E31D9CC4FA354E0B2B046CBA596 /* PhoneNumberKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B1EF6B87734993EE5369AE3F120B170 /* PhoneNumberKit-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		3D8A40C0C1B7C8982627E56385D1BBDA /* PhoneNumberParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F2EFCA5261393BA74419E07B688AA4 /* PhoneNumberParser.swift */; };
-		5A21938547B5A977FB12B35593F099A7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89E9323ECAD6590776E05E80F4202A /* Constants.swift */; };
-		7D79088112DBFE05852CBCA103F71973 /* MetadataParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA96BFC89526533FE9954B2D755329E /* MetadataParsing.swift */; };
-		9AF2623C9D7A41C5D16053540631BE9F /* PhoneNumberKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C831A0DD4B1B12EF9D5695BCE6FD99E /* PhoneNumberKit-dummy.m */; };
-		9FA85D3FE3B7C5F77FD90666F1DF99E6 /* NSRegularExpression+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A323567A57B7EB7C6679C727A379BB /* NSRegularExpression+Swift.swift */; };
-		A3B7F6AF63F8BE24B01DFE623BB914D3 /* RegexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC732FBEA33B46438F31651DF18C0B8C /* RegexManager.swift */; };
-		B72510C58F62A4E54F02D18BF0118AFC /* MetadataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966CBB2C7BA9220980353287DDF411B1 /* MetadataTypes.swift */; };
-		C88516EDC4E0337B5A0363E90D22D256 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B1C45D3AFA98A0EBB684643656CF3 /* ParseManager.swift */; };
-		C921EBBC9EC92FF2FA09C4992902C636 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC74D1FC4AE31461FA7F08F5B9868A2A /* PhoneNumber.swift */; };
-		CCC75C3A0DBF86025699DC20DBE28887 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A136BE03725DEE57BD3B07968DD2E1D9 /* Formatter.swift */; };
-		CFC37E94C9585B351BEC04E1FC877D2C /* Pods-zenly-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A133C093FB6E894D85281DC54A1AB77 /* Pods-zenly-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		E25A7B304F4D51BB8749228FE0A15893 /* MetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342E843D078E5AD98A484234872B8D5D /* MetadataManager.swift */; };
+		0A147D1E6D84CA1ACEFE5F081B13554A /* PartialFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706AA1DF38891B65EE9FCF3D8BA3D2BD /* PartialFormatter.swift */; };
+		0F2111721B7CA27A7C4C59E57D6A6E5D /* PhoneNumberKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FCC1DFC427C088BEA45DE6EFC3D45 /* PhoneNumberKit.swift */; };
+		2AD28ECBC5247BDBEC56A87EFA2DB523 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BFA23A32DC2D17B5167857E5E68EF /* TextField.swift */; };
+		39584E31D9CC4FA354E0B2B046CBA596 /* PhoneNumberKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FCF0AC28E9540ABD1FFCBEA81CED32A /* PhoneNumberKit-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3D8A40C0C1B7C8982627E56385D1BBDA /* PhoneNumberParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE18D2B3F45AB1FF5593716E93F29D /* PhoneNumberParser.swift */; };
+		5A21938547B5A977FB12B35593F099A7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F7A7CC0D18CFC193666C91AB53777 /* Constants.swift */; };
+		7917E33726E6C372A2669CC6A9E5C1BD /* Pods-zenly-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A133C093FB6E894D85281DC54A1AB77 /* Pods-zenly-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		7D79088112DBFE05852CBCA103F71973 /* MetadataParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18270D3588C44D3B238661556CDA317A /* MetadataParsing.swift */; };
+		90955495C9DB6CC2513F4E3623BF93B1 /* Pods-zenly-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 07666F78229BAF470D43C69BB6D8E2A9 /* Pods-zenly-dummy.m */; };
+		9AF2623C9D7A41C5D16053540631BE9F /* PhoneNumberKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C040D95B7419A94713A25C2AD8F10F2F /* PhoneNumberKit-dummy.m */; };
+		9FA85D3FE3B7C5F77FD90666F1DF99E6 /* NSRegularExpression+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BBF0F3CA5C64A8FD4358A1DBA9E1 /* NSRegularExpression+Swift.swift */; };
+		A3B7F6AF63F8BE24B01DFE623BB914D3 /* RegexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518928304D1D54074315C5C39EA885A /* RegexManager.swift */; };
+		B72510C58F62A4E54F02D18BF0118AFC /* MetadataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138EFC72CD680D92EA79B5AF8808D058 /* MetadataTypes.swift */; };
+		C88516EDC4E0337B5A0363E90D22D256 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7C55047AA722DBBD41ED9622BEF8E /* ParseManager.swift */; };
+		C921EBBC9EC92FF2FA09C4992902C636 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF69300F271F65F55DFDF4186125B64 /* PhoneNumber.swift */; };
+		CCC75C3A0DBF86025699DC20DBE28887 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C78AA4BC76D3D4D42BBD0A894AD5E6E /* Formatter.swift */; };
+		E25A7B304F4D51BB8749228FE0A15893 /* MetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BC5A902B6D00AE4915E8EB6F3830A0 /* MetadataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F99E2AD5D17BE96CE6DF085F69AEE64D /* PBXContainerItemProxy */ = {
+		415D366BDA2AA72436470CE459AA4343 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C942A9CCE5CF382E8053D9757DA6249D;
 			remoteInfo = PhoneNumberKit;
 		};
+		D9AD0001FC329671BD7880A0B4DDCA97 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5B4BBC6DD552AC8943C7E22772FC1D3;
+			remoteInfo = GoogleMaps;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		07666F78229BAF470D43C69BB6D8E2A9 /* Pods-zenly-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-zenly-dummy.m"; sourceTree = "<group>"; };
-		0CD330C78CCFF95A0CDD25099B637018 /* PhoneNumberKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PhoneNumberKit.modulemap; sourceTree = "<group>"; };
-		342E843D078E5AD98A484234872B8D5D /* MetadataManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MetadataManager.swift; path = PhoneNumberKit/MetadataManager.swift; sourceTree = "<group>"; };
-		37F2EFCA5261393BA74419E07B688AA4 /* PhoneNumberParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumberParser.swift; path = PhoneNumberKit/PhoneNumberParser.swift; sourceTree = "<group>"; };
-		4B1EF6B87734993EE5369AE3F120B170 /* PhoneNumberKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PhoneNumberKit-umbrella.h"; sourceTree = "<group>"; };
-		4C831A0DD4B1B12EF9D5695BCE6FD99E /* PhoneNumberKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PhoneNumberKit-dummy.m"; sourceTree = "<group>"; };
-		50A54B8F46B154765842253F61DA5995 /* PhoneNumberKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumberKit.swift; path = PhoneNumberKit/PhoneNumberKit.swift; sourceTree = "<group>"; };
-		51A323567A57B7EB7C6679C727A379BB /* NSRegularExpression+Swift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSRegularExpression+Swift.swift"; path = "PhoneNumberKit/NSRegularExpression+Swift.swift"; sourceTree = "<group>"; };
+		0EAE18D2B3F45AB1FF5593716E93F29D /* PhoneNumberParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumberParser.swift; path = PhoneNumberKit/PhoneNumberParser.swift; sourceTree = "<group>"; };
+		138EFC72CD680D92EA79B5AF8808D058 /* MetadataTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MetadataTypes.swift; path = PhoneNumberKit/MetadataTypes.swift; sourceTree = "<group>"; };
+		18270D3588C44D3B238661556CDA317A /* MetadataParsing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MetadataParsing.swift; path = PhoneNumberKit/MetadataParsing.swift; sourceTree = "<group>"; };
+		18A964092BD2DCA474DFB75254126F3B /* PhoneNumberKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PhoneNumberKit-prefix.pch"; sourceTree = "<group>"; };
+		1FA7C55047AA722DBBD41ED9622BEF8E /* ParseManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParseManager.swift; path = PhoneNumberKit/ParseManager.swift; sourceTree = "<group>"; };
+		206BFA23A32DC2D17B5167857E5E68EF /* TextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = PhoneNumberKit/UI/TextField.swift; sourceTree = "<group>"; };
+		235C2FAC1B16F3517449E5A8C8FD9703 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
+		358414A19D3E9395FEB4FD63B08F8156 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
+		4FCF0AC28E9540ABD1FFCBEA81CED32A /* PhoneNumberKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PhoneNumberKit-umbrella.h"; sourceTree = "<group>"; };
 		5A133C093FB6E894D85281DC54A1AB77 /* Pods-zenly-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-zenly-umbrella.h"; sourceTree = "<group>"; };
-		5AA96BFC89526533FE9954B2D755329E /* MetadataParsing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MetadataParsing.swift; path = PhoneNumberKit/MetadataParsing.swift; sourceTree = "<group>"; };
 		5E11578768FB1EF8C543BEC873A7F82B /* Pods-zenly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-zenly.debug.xcconfig"; sourceTree = "<group>"; };
+		62CAEBE9FC9DEC705E251F0D0FBCA878 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
 		69681285C13FB58876DD5727BCB2DC85 /* libPhoneNumberKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libPhoneNumberKit.a; path = libPhoneNumberKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F2EA3DF5A414C79EAF74DF7B9F80E76 /* PhoneNumberKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PhoneNumberKit.modulemap; sourceTree = "<group>"; };
+		706AA1DF38891B65EE9FCF3D8BA3D2BD /* PartialFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PartialFormatter.swift; path = PhoneNumberKit/PartialFormatter.swift; sourceTree = "<group>"; };
 		756122EE6CB20F615F57B62156C051F1 /* Pods-zenly-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-zenly-resources.sh"; sourceTree = "<group>"; };
-		7B89E9323ECAD6590776E05E80F4202A /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = PhoneNumberKit/Constants.swift; sourceTree = "<group>"; };
-		966CBB2C7BA9220980353287DDF411B1 /* MetadataTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MetadataTypes.swift; path = PhoneNumberKit/MetadataTypes.swift; sourceTree = "<group>"; };
+		7F5DAC8DBACB978B3B12F2B9098B1645 /* GoogleMaps.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.xcconfig; sourceTree = "<group>"; };
+		81A43638516AB66D9EFD879559AEDAAC /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		890D02B9154DD83ADC0D8A00CE8BCAC8 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; includeInIndex = 1; name = PhoneNumberMetadata.json; path = PhoneNumberKit/Resources/PhoneNumberMetadata.json; sourceTree = "<group>"; };
+		8BF69300F271F65F55DFDF4186125B64 /* PhoneNumber.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumber.swift; path = PhoneNumberKit/PhoneNumber.swift; sourceTree = "<group>"; };
+		8C78AA4BC76D3D4D42BBD0A894AD5E6E /* Formatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Formatter.swift; path = PhoneNumberKit/Formatter.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F6D566AFE09504B2201A92644DD4705 /* PartialFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PartialFormatter.swift; path = PhoneNumberKit/PartialFormatter.swift; sourceTree = "<group>"; };
-		A136BE03725DEE57BD3B07968DD2E1D9 /* Formatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Formatter.swift; path = PhoneNumberKit/Formatter.swift; sourceTree = "<group>"; };
 		B0E675D7643038082303B07C73EB8B14 /* Pods-zenly.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-zenly.modulemap"; sourceTree = "<group>"; };
-		B4CD64A2B49C78308FE3B26A8102ACB7 /* TextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = PhoneNumberKit/UI/TextField.swift; sourceTree = "<group>"; };
 		B666B76814F29D88C7FC7842DE80EB9F /* Pods-zenly-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-zenly-acknowledgements.plist"; sourceTree = "<group>"; };
+		C040D95B7419A94713A25C2AD8F10F2F /* PhoneNumberKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PhoneNumberKit-dummy.m"; sourceTree = "<group>"; };
 		C0AA930A2230BA7415F430408E1287B9 /* libPods-zenly.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-zenly.a"; path = "libPods-zenly.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2BA5ACB9DFAB761D71F4297C6FEF14C /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; includeInIndex = 1; name = PhoneNumberMetadata.json; path = PhoneNumberKit/Resources/PhoneNumberMetadata.json; sourceTree = "<group>"; };
-		CAED377E21B6986671A61D5360F8E213 /* PhoneNumberKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PhoneNumberKit-prefix.pch"; sourceTree = "<group>"; };
-		CC74D1FC4AE31461FA7F08F5B9868A2A /* PhoneNumber.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumber.swift; path = PhoneNumberKit/PhoneNumber.swift; sourceTree = "<group>"; };
+		D03FCC1DFC427C088BEA45DE6EFC3D45 /* PhoneNumberKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumberKit.swift; path = PhoneNumberKit/PhoneNumberKit.swift; sourceTree = "<group>"; };
+		D518928304D1D54074315C5C39EA885A /* RegexManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RegexManager.swift; path = PhoneNumberKit/RegexManager.swift; sourceTree = "<group>"; };
+		DB148990E2D200B873C99DA732F714FB /* PhoneNumberKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PhoneNumberKit.xcconfig; sourceTree = "<group>"; };
 		DC5DC8055BE0D1D98AEF19B0436E3B7C /* Pods-zenly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-zenly.release.xcconfig"; sourceTree = "<group>"; };
-		E0C1407F7BAED0E811A70472CEC850B3 /* PhoneNumberKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PhoneNumberKit.xcconfig; sourceTree = "<group>"; };
-		E67B1C45D3AFA98A0EBB684643656CF3 /* ParseManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParseManager.swift; path = PhoneNumberKit/ParseManager.swift; sourceTree = "<group>"; };
+		E8BC5A902B6D00AE4915E8EB6F3830A0 /* MetadataManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MetadataManager.swift; path = PhoneNumberKit/MetadataManager.swift; sourceTree = "<group>"; };
 		F13F69486FDD95CE9C0FA00E3398E250 /* Pods-zenly-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-zenly-acknowledgements.markdown"; sourceTree = "<group>"; };
-		FC732FBEA33B46438F31651DF18C0B8C /* RegexManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RegexManager.swift; path = PhoneNumberKit/RegexManager.swift; sourceTree = "<group>"; };
+		F39F7A7CC0D18CFC193666C91AB53777 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = PhoneNumberKit/Constants.swift; sourceTree = "<group>"; };
+		FD58BBF0F3CA5C64A8FD4358A1DBA9E1 /* NSRegularExpression+Swift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSRegularExpression+Swift.swift"; path = "PhoneNumberKit/NSRegularExpression+Swift.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +101,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B50CA31ECF0B3744A8D2A24D2E9B1772 /* Frameworks */ = {
+		C626E8ADCC9752442CABAF647162D691 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -87,6 +111,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A0BF0943D669AF9B2AD46561D9B0D62 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7F5DAC8DBACB978B3B12F2B9098B1645 /* GoogleMaps.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GoogleMaps";
+			sourceTree = "<group>";
+		};
+		0DD23AECBE1CA843684172D118C5E362 /* PhoneNumberKit */ = {
+			isa = PBXGroup;
+			children = (
+				51A1B511E2F0DE756EEAF06D490C7E16 /* PhoneNumberKitCore */,
+				30FABE1888D4C5E4C01BB934C8362B8C /* Support Files */,
+				E820F76B896C4CBCA91B6E1BAC5AE364 /* UIKit */,
+			);
+			name = PhoneNumberKit;
+			path = PhoneNumberKit;
+			sourceTree = "<group>";
+		};
+		2B73C48574BB3C05E33EE9A38CD399CE /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				41CE9268A05842F1963D47BA27CB9D77 /* Base */,
+				F3C0B3A61E2F715E38A3C0DF46CC7646 /* Maps */,
+				0A0BF0943D669AF9B2AD46561D9B0D62 /* Support Files */,
+			);
+			name = GoogleMaps;
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		30FABE1888D4C5E4C01BB934C8362B8C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F2EA3DF5A414C79EAF74DF7B9F80E76 /* PhoneNumberKit.modulemap */,
+				DB148990E2D200B873C99DA732F714FB /* PhoneNumberKit.xcconfig */,
+				C040D95B7419A94713A25C2AD8F10F2F /* PhoneNumberKit-dummy.m */,
+				18A964092BD2DCA474DFB75254126F3B /* PhoneNumberKit-prefix.pch */,
+				4FCF0AC28E9540ABD1FFCBEA81CED32A /* PhoneNumberKit-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/PhoneNumberKit";
+			sourceTree = "<group>";
+		};
 		34AD96E7B66F2CA2319B9366E09E8FF7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,35 +164,40 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		45E679AE26F1D6D78DF057244565B5F4 /* PhoneNumberKitCore */ = {
+		41CE9268A05842F1963D47BA27CB9D77 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				7B89E9323ECAD6590776E05E80F4202A /* Constants.swift */,
-				A136BE03725DEE57BD3B07968DD2E1D9 /* Formatter.swift */,
-				342E843D078E5AD98A484234872B8D5D /* MetadataManager.swift */,
-				5AA96BFC89526533FE9954B2D755329E /* MetadataParsing.swift */,
-				966CBB2C7BA9220980353287DDF411B1 /* MetadataTypes.swift */,
-				51A323567A57B7EB7C6679C727A379BB /* NSRegularExpression+Swift.swift */,
-				E67B1C45D3AFA98A0EBB684643656CF3 /* ParseManager.swift */,
-				9F6D566AFE09504B2201A92644DD4705 /* PartialFormatter.swift */,
-				CC74D1FC4AE31461FA7F08F5B9868A2A /* PhoneNumber.swift */,
-				50A54B8F46B154765842253F61DA5995 /* PhoneNumberKit.swift */,
-				37F2EFCA5261393BA74419E07B688AA4 /* PhoneNumberParser.swift */,
-				FC732FBEA33B46438F31651DF18C0B8C /* RegexManager.swift */,
-				F7D2C742466B42A783AC5BCA1BE7ED07 /* Resources */,
+				41D9901C9CB9FE1665B6FE8425412F6D /* Frameworks */,
 			);
-			name = PhoneNumberKitCore;
+			name = Base;
 			sourceTree = "<group>";
 		};
-		4B272450E9F0E6DD459436BA5B2B6704 /* PhoneNumberKit */ = {
+		41D9901C9CB9FE1665B6FE8425412F6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				45E679AE26F1D6D78DF057244565B5F4 /* PhoneNumberKitCore */,
-				A03F49974D87A1A37548D64A1D818BCB /* Support Files */,
-				BCB8BC73153C19AADE9A4C998DA1CE9E /* UIKit */,
+				235C2FAC1B16F3517449E5A8C8FD9703 /* GoogleMapsBase.framework */,
 			);
-			name = PhoneNumberKit;
-			path = PhoneNumberKit;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		51A1B511E2F0DE756EEAF06D490C7E16 /* PhoneNumberKitCore */ = {
+			isa = PBXGroup;
+			children = (
+				F39F7A7CC0D18CFC193666C91AB53777 /* Constants.swift */,
+				8C78AA4BC76D3D4D42BBD0A894AD5E6E /* Formatter.swift */,
+				E8BC5A902B6D00AE4915E8EB6F3830A0 /* MetadataManager.swift */,
+				18270D3588C44D3B238661556CDA317A /* MetadataParsing.swift */,
+				138EFC72CD680D92EA79B5AF8808D058 /* MetadataTypes.swift */,
+				FD58BBF0F3CA5C64A8FD4358A1DBA9E1 /* NSRegularExpression+Swift.swift */,
+				1FA7C55047AA722DBBD41ED9622BEF8E /* ParseManager.swift */,
+				706AA1DF38891B65EE9FCF3D8BA3D2BD /* PartialFormatter.swift */,
+				8BF69300F271F65F55DFDF4186125B64 /* PhoneNumber.swift */,
+				D03FCC1DFC427C088BEA45DE6EFC3D45 /* PhoneNumberKit.swift */,
+				0EAE18D2B3F45AB1FF5593716E93F29D /* PhoneNumberParser.swift */,
+				D518928304D1D54074315C5C39EA885A /* RegexManager.swift */,
+				CD95955CEE1344C8844C8222F2FD63E3 /* Resources */,
+			);
+			name = PhoneNumberKitCore;
 			sourceTree = "<group>";
 		};
 		6C5139AC88C4BCE0B8F6F43D1DAE4A72 /* Pods-zenly */ = {
@@ -143,33 +216,38 @@
 			path = "Target Support Files/Pods-zenly";
 			sourceTree = "<group>";
 		};
-		A03F49974D87A1A37548D64A1D818BCB /* Support Files */ = {
+		72570CDDC8C630D03E74C4784820779D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0CD330C78CCFF95A0CDD25099B637018 /* PhoneNumberKit.modulemap */,
-				E0C1407F7BAED0E811A70472CEC850B3 /* PhoneNumberKit.xcconfig */,
-				4C831A0DD4B1B12EF9D5695BCE6FD99E /* PhoneNumberKit-dummy.m */,
-				CAED377E21B6986671A61D5360F8E213 /* PhoneNumberKit-prefix.pch */,
-				4B1EF6B87734993EE5369AE3F120B170 /* PhoneNumberKit-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/PhoneNumberKit";
-			sourceTree = "<group>";
-		};
-		BCB8BC73153C19AADE9A4C998DA1CE9E /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				B4CD64A2B49C78308FE3B26A8102ACB7 /* TextField.swift */,
-			);
-			name = UIKit;
-			sourceTree = "<group>";
-		};
-		C03A740999EB6C81DC6DF71B75B71D43 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4B272450E9F0E6DD459436BA5B2B6704 /* PhoneNumberKit */,
+				2B73C48574BB3C05E33EE9A38CD399CE /* GoogleMaps */,
+				0DD23AECBE1CA843684172D118C5E362 /* PhoneNumberKit */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8F045596F97C6F346F45FCBDEC32F6BA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				81A43638516AB66D9EFD879559AEDAAC /* GoogleMaps.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C5B302D50C2791D1F87F4292134863CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62CAEBE9FC9DEC705E251F0D0FBCA878 /* GoogleMaps.framework */,
+				358414A19D3E9395FEB4FD63B08F8156 /* GoogleMapsCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD95955CEE1344C8844C8222F2FD63E3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				890D02B9154DD83ADC0D8A00CE8BCAC8 /* PhoneNumberMetadata.json */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -177,7 +255,7 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
-				C03A740999EB6C81DC6DF71B75B71D43 /* Pods */,
+				72570CDDC8C630D03E74C4784820779D /* Pods */,
 				34AD96E7B66F2CA2319B9366E09E8FF7 /* Products */,
 				D254855E46EB5CF12127E45183AB63D0 /* Targets Support Files */,
 			);
@@ -198,12 +276,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F7D2C742466B42A783AC5BCA1BE7ED07 /* Resources */ = {
+		E820F76B896C4CBCA91B6E1BAC5AE364 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				C2BA5ACB9DFAB761D71F4297C6FEF14C /* PhoneNumberMetadata.json */,
+				206BFA23A32DC2D17B5167857E5E68EF /* TextField.swift */,
 			);
-			name = Resources;
+			name = UIKit;
+			sourceTree = "<group>";
+		};
+		F3C0B3A61E2F715E38A3C0DF46CC7646 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				C5B302D50C2791D1F87F4292134863CC /* Frameworks */,
+				8F045596F97C6F346F45FCBDEC32F6BA /* Resources */,
+			);
+			name = Maps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,11 +304,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		40D3603B99A62C3CD981459A3D99D0C0 /* Headers */ = {
+		6179AE11EA802385A26E1A8F756F9C8C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFC37E94C9585B351BEC04E1FC877D2C /* Pods-zenly-umbrella.h in Headers */,
+				7917E33726E6C372A2669CC6A9E5C1BD /* Pods-zenly-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,16 +317,17 @@
 /* Begin PBXNativeTarget section */
 		7966DFB8197E172FC27D8CBD27EF219C /* Pods-zenly */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A10F00973785964D5B1192E7BEEBC68A /* Build configuration list for PBXNativeTarget "Pods-zenly" */;
+			buildConfigurationList = C00890CDDBA5461A39F7D003C6457DB0 /* Build configuration list for PBXNativeTarget "Pods-zenly" */;
 			buildPhases = (
-				40D3603B99A62C3CD981459A3D99D0C0 /* Headers */,
-				D4215E5A27C2E9688650EA539BF4D4ED /* Sources */,
-				B50CA31ECF0B3744A8D2A24D2E9B1772 /* Frameworks */,
+				6179AE11EA802385A26E1A8F756F9C8C /* Headers */,
+				8731F9D8182166C1724B5699EF6D089E /* Sources */,
+				C626E8ADCC9752442CABAF647162D691 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1560CE9A1C322E492AA7A9AD6C4F00CE /* PBXTargetDependency */,
+				2F6032ECBDD26AF33B4D08463F96BA50 /* PBXTargetDependency */,
+				A18E3837213EC39AE90A2693F7E14782 /* PBXTargetDependency */,
 			);
 			name = "Pods-zenly";
 			productName = "Pods-zenly";
@@ -285,6 +373,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */,
 				C942A9CCE5CF382E8053D9757DA6249D /* PhoneNumberKit */,
 				7966DFB8197E172FC27D8CBD27EF219C /* Pods-zenly */,
 			);
@@ -340,29 +429,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D4215E5A27C2E9688650EA539BF4D4ED /* Sources */ = {
+		8731F9D8182166C1724B5699EF6D089E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34D4C9918CD4AC8E684F6E71C4C383E2 /* Pods-zenly-dummy.m in Sources */,
+				90955495C9DB6CC2513F4E3623BF93B1 /* Pods-zenly-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1560CE9A1C322E492AA7A9AD6C4F00CE /* PBXTargetDependency */ = {
+		2F6032ECBDD26AF33B4D08463F96BA50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleMaps;
+			target = E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */;
+			targetProxy = D9AD0001FC329671BD7880A0B4DDCA97 /* PBXContainerItemProxy */;
+		};
+		A18E3837213EC39AE90A2693F7E14782 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PhoneNumberKit;
 			target = C942A9CCE5CF382E8053D9757DA6249D /* PhoneNumberKit */;
-			targetProxy = F99E2AD5D17BE96CE6DF085F69AEE64D /* PBXContainerItemProxy */;
+			targetProxy = 415D366BDA2AA72436470CE459AA4343 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		124A2A417782A0C4FE2E2ACD867E9B61 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0C1407F7BAED0E811A70472CEC850B3 /* PhoneNumberKit.xcconfig */;
+			baseConfigurationReference = DB148990E2D200B873C99DA732F714FB /* PhoneNumberKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -444,7 +539,47 @@
 			};
 			name = Release;
 		};
-		45A1DB454C473CCDA5442FC5A9607B1F /* Debug */ = {
+		1C2E943868A00542F708F7BBAA12CEF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC5DC8055BE0D1D98AEF19B0436E3B7C /* Pods-zenly.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-zenly/Pods-zenly.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4AA46832D8A16AA4E4811383B204D2A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F5DAC8DBACB978B3B12F2B9098B1645 /* GoogleMaps.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		65867272F43C79FD68505594C49C6F1D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E11578768FB1EF8C543BEC873A7F82B /* Pods-zenly.debug.xcconfig */;
 			buildSettings = {
@@ -469,7 +604,7 @@
 		};
 		9988F0737B68EF964B5BA08563585972 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0C1407F7BAED0E811A70472CEC850B3 /* PhoneNumberKit.xcconfig */;
+			baseConfigurationReference = DB148990E2D200B873C99DA732F714FB /* PhoneNumberKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -492,25 +627,18 @@
 			};
 			name = Release;
 		};
-		CBD94846B6B8291A9553A4845A85494D /* Release */ = {
+		C7565AEA7FCD8F66CAF546DC5AF1404F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC5DC8055BE0D1D98AEF19B0436E3B7C /* Pods-zenly.release.xcconfig */;
+			baseConfigurationReference = 7F5DAC8DBACB978B3B12F2B9098B1645 /* GoogleMaps.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-zenly/Pods-zenly.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -592,6 +720,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		46921981F609C5BA3CB72EC4EA41299D /* Build configuration list for PBXAggregateTarget "GoogleMaps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AA46832D8A16AA4E4811383B204D2A4 /* Debug */,
+				C7565AEA7FCD8F66CAF546DC5AF1404F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -601,11 +738,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A10F00973785964D5B1192E7BEEBC68A /* Build configuration list for PBXNativeTarget "Pods-zenly" */ = {
+		C00890CDDBA5461A39F7D003C6457DB0 /* Build configuration list for PBXNativeTarget "Pods-zenly" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				45A1DB454C473CCDA5442FC5A9607B1F /* Debug */,
-				CBD94846B6B8291A9553A4845A85494D /* Release */,
+				65867272F43C79FD68505594C49C6F1D /* Debug */,
+				1C2E943868A00542F708F7BBAA12CEF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
