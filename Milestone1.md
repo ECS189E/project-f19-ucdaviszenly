@@ -37,15 +37,15 @@ https://balsamiq.cloud/skyb4o8/pj74nbl
    2. a view that shows the result of searching and a button for user to add friend
    
 ### Timeline
-11.18: Finish adding friends
+11.18: Finish adding friends(Jiaxin Zhao)
 
-11.20: Finish Friend's list
+11.20: Finish Friend's list(Zirong Yu)
 
-11.22: Finish friend's profile + user profile  
+11.22: Finish friend's profile + user profile(Jiaxin Zhao, Zirong Yu)
 
-11.26: Finish showing friend's location on the map
+11.26: Finish showing friend's location on the map (Lanqing Cheng, Niu Shang)
 
-11.30: Finish MapMarkerPopupView
+11.30: Finish MapMarkerPopupView(Lanqing Cheng, Niu Shang)
 
 ### Trello board
 [Project markdown file link](https://github.com/ECS189E/project-f19-ucdaviszenly/blob/master/SprintPlanning2.md)
