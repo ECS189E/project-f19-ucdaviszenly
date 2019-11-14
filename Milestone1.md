@@ -12,7 +12,8 @@ https://balsamiq.cloud/skyb4o8/pj74nbl
 ### View Controllers
 * Homeview
   1. a map view using google map show locations of user and user's friend
-  2. one button for login, one button to showing friends if user has already log in, one button showing the current location
+  2. one button for login, one button to showing friends if user has already log in, one button
+     showing the current location.
 * ChooseLoginView
    1. user should be able to choose log in with Facebook account or log in with phone number
    2. user should be able to log out
@@ -23,15 +24,28 @@ https://balsamiq.cloud/skyb4o8/pj74nbl
    1. tableview show friends
    2. a imageview and a lable showing user's name and profile picture
    3. once click the friends cell should bring their location on the map
-
+* User&FriendProfileView
+   1. a view to show user's profile and allowing user to change their username and photo
+   2. a view after user click on one of their friends, showing firend's basic information
+* MapMarkerPopupView
+   1. User can mark event on the map
+   2. Other Users can see this event. Once they click, a popup view should appear which shows
+      other information about this event.
+   3. Other users can also click thumbs up or down to this event.
+* AddFriendView
+   1. a view for user input phone number to search for their friends
+   2. a view that shows the result of searching and a button for user to add friend
+   
 ### Timeline
-11.14: Finish adding friends
+11.18: Finish adding friends
 
-11.15: Finish Friend's list
+11.20: Finish Friend's list
 
-11.17: Finish friend's profile + user profile  
+11.22: Finish friend's profile + user profile  
 
-11.19: Finish showing friend's location on the map
+11.26: Finish showing friend's location on the map
+
+11.30: Finish MapMarkerPopupView
 
 ### Trello board
 [Project markdown file link](https://github.com/ECS189E/project-f19-ucdaviszenly/blob/master/SprintPlanning2.md)
