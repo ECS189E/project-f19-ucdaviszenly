@@ -1,0 +1,16 @@
+target 'Homework1' do
+
+  use_frameworks!
+
+  pod 'PhoneNumberKit'
+
+  pod 'Firebase'
+ 
+  pod 'Firebase/Auth'
+
+  pod 'Firebase/Database'
+
+end
+
+
+workspace 'Homework1'
