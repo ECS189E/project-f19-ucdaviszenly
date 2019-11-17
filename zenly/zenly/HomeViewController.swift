@@ -7,6 +7,14 @@
 
 import UIKit
 import GoogleMaps
+
+struct eventData {
+    var title: String = ""
+    var content: String = ""
+    var image: UIImage? = nil
+}
+
+
 class HomeViewController: UIViewController, GMSMapViewDelegate {
 
     @IBOutlet weak var getLocationButton: UIButton!
@@ -14,7 +22,8 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var logOut: UIBarButtonItem!
     let locationManager = CLLocationManager()
-
+    
+    var selectedMarker = GMSMarker()
   
     
     override func viewDidLoad() {
@@ -22,6 +31,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         locationManager.delegate = self as CLLocationManagerDelegate
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
+        
     }
     
     private func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D) {
@@ -53,20 +63,34 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         reverseGeocodeCoordinate(position)
         
     }
-    //long press at a place to add a marker
+    //long press at a place to show a popup view to add a marker
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
-        
-        let alert = UIAlertController(title: "Add Marker", message: "", preferredStyle: .alert)
-        alert.addTextField{ textField in
-            textField.keyboardType = .asciiCapable
+        let alert = UIAlertController(title: "Add Marker", message: "enter the name of the event", preferredStyle: .alert)
+            alert.addTextField{ textField in
+                textField.keyboardType = .asciiCapable
+            }
+            alert.addAction(UIAlertAction(title:"Done", style: .default, handler: { _ in
+                let textField = alert.textFields?.first
+                let marker = GMSMarker(position: coordinate)
+                marker.title = textField!.text ?? " "
+                marker.map = self.mapView
+                marker.userData = eventData(title: marker.title ?? "")
+            }))
+            self.present(alert, animated: true, completion: nil)
+    }
+    //go to MarkerView if tap on a marker
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        selectedMarker = marker
+        self.performSegue(withIdentifier: "showMarker", sender: self)
+        return true
+    }
+    //send marker.userData to MarkerViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMarker" {
+            let dest : MarkerViewController = segue.destination as! MarkerViewController
+            dest.marker = self.selectedMarker
+       
         }
-        alert.addAction(UIAlertAction(title:"Done", style: .default, handler: { _ in
-            let textField = alert.textFields?.first
-            let marker = GMSMarker(position: coordinate)
-            marker.title = textField?.text
-            marker.map = self.mapView
-            
-        }))
     }
   
     @IBAction func logOutPressed(_ sender: Any) {

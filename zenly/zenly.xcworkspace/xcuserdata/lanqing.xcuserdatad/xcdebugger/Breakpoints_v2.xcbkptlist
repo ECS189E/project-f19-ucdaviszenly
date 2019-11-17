@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "B52A53E0-AE5F-43DA-A4CF-0AA3E8DD4B21"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2406FD1A-C60B-4F97-9E78-7F77E6E161D5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zenly/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "HomeViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "741F0CFA-C93D-4244-94FD-60BB201D5303"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zenly/MarkerViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "MarkerViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "741F0CFA-C93D-4244-94FD-60BB201D5303 - 944c320639f52c6"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "zenly.MarkerViewController.title_field.getter : Swift.Optional&lt;__C.UITextField&gt;"
+                  moduleName = "zenly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lanqing/Desktop/project-f19-ucdaviszenly/zenly/zenly/MarkerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "741F0CFA-C93D-4244-94FD-60BB201D5303 - 8305ef0cf0c3a6d2"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "zenly.MarkerViewController.title_field.setter : Swift.Optional&lt;__C.UITextField&gt;"
+                  moduleName = "zenly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lanqing/Desktop/project-f19-ucdaviszenly/zenly/zenly/MarkerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "741F0CFA-C93D-4244-94FD-60BB201D5303 - e127ec082a456dc5"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "zenly.MarkerViewController.title_field.modify : Swift.Optional&lt;__C.UITextField&gt;"
+                  moduleName = "zenly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lanqing/Desktop/project-f19-ucdaviszenly/zenly/zenly/MarkerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "67">
+               </Location>
+               <Location
+                  uuid = "741F0CFA-C93D-4244-94FD-60BB201D5303 - 833ff8a51d17f729"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "zenly.MarkerViewController.title_field.modify : Swift.Optional&lt;__C.UITextField&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "zenly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lanqing/Desktop/project-f19-ucdaviszenly/zenly/zenly/MarkerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "741F0CFA-C93D-4244-94FD-60BB201D5303 - e843a7a26006a33d"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "zenly.MarkerViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; zenly.MarkerViewController"
+                  moduleName = "zenly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lanqing/Desktop/project-f19-ucdaviszenly/zenly/zenly/MarkerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "276">
+               </Location>
+               <Location
+                  uuid = "741F0CFA-C93D-4244-94FD-60BB201D5303 - e91650a99cc81024"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "zenly.MarkerViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;zenly.MarkerViewController&gt;"
+                  moduleName = "zenly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lanqing/Desktop/project-f19-ucdaviszenly/zenly/zenly/MarkerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "214">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
