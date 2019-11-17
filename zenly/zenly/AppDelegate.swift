@@ -1,6 +1,5 @@
 //
 //  AppDelegate.swift
-//  wallet-1
 //
 //  Created by Lanqing on 10/7/19.
 //  Copyright © 2019 Lanqing. All rights reserved.
@@ -12,9 +11,7 @@ import GoogleMaps
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         GMSServices.provideAPIKey("AIzaSyAJ7jCaIsFeJHody_ClQw7regXAIopQDLc")
         return true
     }

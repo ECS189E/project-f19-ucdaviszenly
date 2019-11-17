@@ -316,7 +316,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="address"/>
                                 <connections>
-                                    <action selector="pinPressed:" destination="688-9k-NNm" eventType="touchUpInside" id="dhK-cN-AYO"/>
+                                    <action selector="ShowAddrPressed:" destination="688-9k-NNm" eventType="touchUpInside" id="xEs-VG-X2P"/>
                                 </connections>
                             </button>
                         </subviews>

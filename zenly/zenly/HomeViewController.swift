@@ -7,18 +7,21 @@
 
 import UIKit
 import GoogleMaps
-class HomeViewController: UIViewController{
+class HomeViewController: UIViewController, GMSMapViewDelegate {
 
     @IBOutlet weak var getLocationButton: UIButton!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var logOut: UIBarButtonItem!
     let locationManager = CLLocationManager()
+
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self as CLLocationManagerDelegate
         locationManager.requestWhenInUseAuthorization()
+        mapView.delegate = self
     }
     
     private func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D) {
@@ -36,23 +39,36 @@ class HomeViewController: UIViewController{
         let labelHeight = self.addressLabel.intrinsicContentSize.height
         self.mapView.padding = UIEdgeInsets(top: self.view.safeAreaInsets.top, left: 0,
                                               bottom: labelHeight, right: 0)
-
         // animate the changes in the label’s intrinsic content size.
         UIView.animate(withDuration: 0.25) {
-            
-           //self.pinImageVerticalConstraint.constant = ((labelHeight + self.view.safeAreaInsets.top) * 0.4)
           self.view.layoutIfNeeded()
         }
       }
     }
 
-    @IBAction func pinPressed(_ sender: Any) {
+  
+    
+    @IBAction func ShowAddrPressed(_ sender: Any) {
         guard let position = self.locationManager.location?.coordinate else { return  }
         reverseGeocodeCoordinate(position)
         
     }
-    
-    // logout button bring user to login view
+    //long press at a place to add a marker
+    func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
+        
+        let alert = UIAlertController(title: "Add Marker", message: "", preferredStyle: .alert)
+        alert.addTextField{ textField in
+            textField.keyboardType = .asciiCapable
+        }
+        alert.addAction(UIAlertAction(title:"Done", style: .default, handler: { _ in
+            let textField = alert.textFields?.first
+            let marker = GMSMarker(position: coordinate)
+            marker.title = textField?.text
+            marker.map = self.mapView
+            
+        }))
+    }
+  
     @IBAction func logOutPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "logout",sender: self)
     }
