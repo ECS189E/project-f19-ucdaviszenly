@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>512875265748-6d8mc9j7ioardljfltpstaveb01t5v47.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.512875265748-6d8mc9j7ioardljfltpstaveb01t5v47</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA_ry_LsPT3C2RZkOpgaf5WfiVnkcj13XM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>512875265748</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>arcsoft.Homework1</string>
+	<key>PROJECT_ID</key>
+	<string>ucdzenly</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ucdzenly.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:512875265748:ios:01e93abdb09374d2420541</string>
+	<key>DATABASE_URL</key>
+	<string>https://ucdzenly.firebaseio.com</string>
+</dict>
+</plist>

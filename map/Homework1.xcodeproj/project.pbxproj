@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F19179F237B85020048C66E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F19179E237B85020048C66E /* GoogleService-Info.plist */; };
+		2C497F32238111A600520A12 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C497F31238111A500520A12 /* GoogleService-Info.plist */; };
 		8FEF8BEA234C0D7600E0FBA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEF8BE9234C0D7600E0FBA4 /* AppDelegate.swift */; };
 		8FEF8BEC234C0D7600E0FBA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEF8BEB234C0D7600E0FBA4 /* SceneDelegate.swift */; };
 		8FEF8BEE234C0D7600E0FBA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEF8BED234C0D7600E0FBA4 /* ViewController.swift */; };
@@ -18,8 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C497F31238111A500520A12 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3DB3C3CACA2B159C39436A63 /* Pods_Homework1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Homework1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F19179E237B85020048C66E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8FEF8BE6234C0D7600E0FBA4 /* Homework1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homework1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FEF8BE9234C0D7600E0FBA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FEF8BEB234C0D7600E0FBA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 				8FEF8BF2234C0D7A00E0FBA4 /* Assets.xcassets */,
 				8FEF8BF4234C0D7A00E0FBA4 /* LaunchScreen.storyboard */,
 				8FEF8BF7234C0D7A00E0FBA4 /* Info.plist */,
-				8F19179E237B85020048C66E /* GoogleService-Info.plist */,
+				2C497F31238111A500520A12 /* GoogleService-Info.plist */,
 			);
 			path = Homework1;
 			sourceTree = "<group>";
@@ -155,7 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FEF8BF6234C0D7A00E0FBA4 /* LaunchScreen.storyboard in Resources */,
-				8F19179F237B85020048C66E /* GoogleService-Info.plist in Resources */,
+				2C497F32238111A600520A12 /* GoogleService-Info.plist in Resources */,
 				8FEF8BF3234C0D7A00E0FBA4 /* Assets.xcassets in Resources */,
 				8FEF8BF1234C0D7600E0FBA4 /* Main.storyboard in Resources */,
 			);
