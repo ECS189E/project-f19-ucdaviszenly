@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import Firebase
+import Dispatch
 //import FireBaseFirestore
 //import FirebaseStorage
 
@@ -50,14 +51,15 @@ class MarkerViewController: UIViewController {
         let position = marker.position
         let latitude = position.latitude
         let longitude = position.longitude
-        let dataToSave: [String: Any] = ["content": content, "title": title, "latitude": latitude, "longitude": longitude, "date": date, "URL": imageURL]
+        let dataToSave: [String: Any] = ["content": content, "title": title, "latitude": latitude, "longitude": longitude, "date": date ]
         docRef.setData(dataToSave, completion: nil)
         uploadPhoto()
     }
-    
+    //for test
     @IBAction func testimagesave(_ sender: Any) {
         uploadPhoto()
     }
+    
     var imagePicker = UIImagePickerController()
     @IBAction func addImageButtonPressed(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
@@ -87,6 +89,8 @@ class MarkerViewController: UIViewController {
                 }
                 print("upload url:\(String(describing: url?.absoluteString))")
                 self.imageURL = url?.absoluteString ?? ""
+                let dataToSave: [String: Any] = ["URL": self.imageURL]
+                self.docRef.updateData(dataToSave, completion: nil)
             })
         }
     }
