@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleMaps
+import Firebase
 
 struct eventData {
     var title: String = ""
@@ -21,16 +22,28 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var logOut: UIBarButtonItem!
-    let locationManager = CLLocationManager()
+    var phoneNumInE64: String = ""
     
+    let locationManager = CLLocationManager()
     var selectedMarker = GMSMarker()
+    
+    var docRef: DocumentReference!
+    
   
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        phoneNumInE64 = Storagelocal.phoneNumberInE164 ?? "Error"
+        createUser()
         locationManager.delegate = self as CLLocationManagerDelegate
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
+        
+    }
+    
+    func createUser(){
+        docRef = Firestore.firestore().document("User/\(phoneNumInE64)")
+        //let userName =
         
     }
     
@@ -89,8 +102,10 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         if segue.identifier == "showMarker" {
             let dest : MarkerViewController = segue.destination as! MarkerViewController
             dest.marker = self.selectedMarker
-       
+            dest.phoneNumInE64 = self.phoneNumInE64
+            dest.date = NSDate()
         }
+        
     }
   
     @IBAction func logOutPressed(_ sender: Any) {

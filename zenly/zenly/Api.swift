@@ -29,7 +29,7 @@ struct Api {
         let config = URLSessionConfiguration.ephemeral
         config.timeoutIntervalForRequest = 60
         config.timeoutIntervalForResource = 60
-        if let authToken = Storage.authToken {
+        if let authToken = Storagelocal.authToken {
             config.httpAdditionalHeaders = ["x-authtoken": authToken]
             print("auth in config:\(authToken)")
         } else {

@@ -10,6 +10,7 @@
 import UIKit
 import Foundation
 
+
 class VerifyViewController: UIViewController, PinTexFieldDelegate{
     func didPressBackspace(textField: PinTextField) {
         textField.isUserInteractionEnabled = false
@@ -171,12 +172,21 @@ class VerifyViewController: UIViewController, PinTexFieldDelegate{
             self.loading.isHidden = true
             //segue to home view
             let authToken = response?["auth_token"] as? String
-            Storage.phoneNumberInE164 = self.phoneNumFormatted
-            Storage.authToken = authToken
+            Storagelocal.phoneNumberInE164 = self.phoneNumFormatted
+            Storagelocal.authToken = authToken
+            
             self.performSegue(withIdentifier: "verified",sender: self)
         }
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "HomeViewController" {
+            let dest: HomeViewController = segue.destination as! HomeViewController
+            dest.phoneNumInE64 = phoneNumFormatted
+        }
+    }
+    
     // A function that used to clear the textfield, and move cursor to the first textfield
     func clearInputs(){
         input1.text = ""

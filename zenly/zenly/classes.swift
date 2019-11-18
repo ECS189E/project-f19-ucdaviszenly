@@ -11,7 +11,7 @@ import Foundation
 // Getting: phoneNumber = Storage.phoneNumberInE164
 // Setting: Storage.phoneNumberInE164 = phoneNumber
 
-struct Storage {
+struct Storagelocal {
     static var phoneNumberInE164: String? {
         get {
             return UserDefaults.standard.string(forKey: "phoneNumberInE164")

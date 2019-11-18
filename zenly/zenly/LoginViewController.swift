@@ -10,6 +10,7 @@ import UIKit
 import PhoneNumberKit
 
 
+
 class LoginViewController: UIViewController, UITextFieldDelegate{
  
     @IBOutlet weak var loadingImg: UIActivityIndicatorView!
@@ -19,15 +20,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     var phoneNumFormatted = String()
     var phoneNumber = String()
     let phoneNumberKit = PhoneNumberKit()
+
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     
+        
         inputField.becomeFirstResponder()
         loadingImg.isHidden = true
         // hide errorLabel at first
         errorLabel.isHidden = true
         // get phonenumber in storage, and display in textfield
-        phoneNumber = Storage.phoneNumberInE164 ?? ""
+        phoneNumber = Storagelocal.phoneNumberInE164 ?? ""
             if phoneNumber != "" {
                 phoneNumber = phoneNumber.replacingOccurrences(of: "+1", with: "")
                 
@@ -68,7 +74,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             
         }
         // first check if user has authToken, if yes, go to wallet view
-        if Storage.authToken != nil, Storage.phoneNumberInE164 == phoneNumFormatted {
+        if Storagelocal.authToken != nil, Storagelocal.phoneNumberInE164 == phoneNumFormatted {
             self.performSegue(withIdentifier: "Auth", sender: self)
         //if new user, go to verify view
         }else if(errorLabel.textColor == UIColor.blue){
