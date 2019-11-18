@@ -14,7 +14,10 @@ import Dispatch
 class MarkerViewController: UIViewController {
 
   
+    @IBOutlet weak var DoneBtn: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var addImageBtn: UIButton!
+    @IBOutlet weak var deletePhotoBtn: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     var imageURL = ""
     @IBOutlet weak var title_field: UITextField!
@@ -28,9 +31,12 @@ class MarkerViewController: UIViewController {
         super.viewDidLoad()
         imagePicker.delegate = self
         setup()
+        //activityIndicator.isHidden = true
+        deletePhotoBtn.isHidden = true
     }
     
     func setup(){
+          
         title_field.text = marker.title
         date = NSDate()
         let combinePosition = "la\(marker.position.latitude)lo\(marker.position.longitude)"
@@ -39,21 +45,32 @@ class MarkerViewController: UIViewController {
     }
 
     @IBAction func SaveButtonPressed(_ sender: Any) {
+
+        //DoneBtn.isUserInteractionEnabled = false
+        //activityIndicator.isHidden = false
+        //activityIndicator.startAnimating()
+
         let content = textView.text ?? ""
         let title = title_field.text ?? ""
         let position = marker.position
         let latitude = position.latitude
         let longitude = position.longitude
         let dataToSave: [String: Any] = ["content": content, "title": title, "latitude": latitude, "longitude": longitude, "date": date ]
-        docRef.setData(dataToSave, completion: nil)
+        docRef.setData(dataToSave)
         uploadPhoto()
-       // self.dismiss(animated: true)
+        
+        
+        
     }
-    //for test
-    @IBAction func testimagesave(_ sender: Any) {
-        uploadPhoto()
+
+    @IBAction func DonePressed(_ sender: Any) {
+        self.dismiss(animated: true)
     }
     
+    @IBAction func deletePhotoPressed(_ sender: Any) {
+        imageView.image = nil
+        deletePhotoBtn.isHidden = true
+    }
     var imagePicker = UIImagePickerController()
     @IBAction func addImageButtonPressed(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
@@ -87,9 +104,10 @@ class MarkerViewController: UIViewController {
                 print("upload url:\(String(describing: url?.absoluteString))")
                 self.imageURL = url?.absoluteString ?? ""
                 let dataToSave: [String: Any] = ["URL": self.imageURL]
-                self.docRef.updateData(dataToSave, completion: nil)
+                self.docRef.updateData(dataToSave)
             })
         }
+        return
     }
     func fetchData(){
         docRef.getDocument(completion: { (docNapShot, error) in
@@ -104,6 +122,7 @@ class MarkerViewController: UIViewController {
                 do{
                     let data = try Data(contentsOf: url)
                     self.imageView.image = UIImage(data: data)
+                    self.deletePhotoBtn.isHidden = false
                 }catch let err{
                   print("Error in fetch data:\(err)")
                 }
@@ -120,5 +139,6 @@ extension MarkerViewController: UIImagePickerControllerDelegate, UINavigationCon
             imageView.image = image
         }
         dismiss(animated: true, completion: nil)
+        deletePhotoBtn.isHidden = false
     }
 }
