@@ -10,9 +10,6 @@ import UIKit
 import GoogleMaps
 import Firebase
 import Dispatch
-//import FireBaseFirestore
-//import FirebaseStorage
-
 
 class MarkerViewController: UIViewController {
 
@@ -34,17 +31,13 @@ class MarkerViewController: UIViewController {
     }
     
     func setup(){
+        title_field.text = marker.title
         date = NSDate()
         let combinePosition = "la\(marker.position.latitude)lo\(marker.position.longitude)"
         docRef = Firestore.firestore().document("User/\(phoneNumInE64)/Event/\(combinePosition)")
         fetchData()
     }
-    //need:
-    // a function to upload image
-    // functions to save changed title and content
-    // a function to add image
-    // store data
-    
+
     @IBAction func SaveButtonPressed(_ sender: Any) {
         let content = textView.text ?? ""
         let title = title_field.text ?? ""
@@ -54,6 +47,7 @@ class MarkerViewController: UIViewController {
         let dataToSave: [String: Any] = ["content": content, "title": title, "latitude": latitude, "longitude": longitude, "date": date ]
         docRef.setData(dataToSave, completion: nil)
         uploadPhoto()
+       // self.dismiss(animated: true)
     }
     //for test
     @IBAction func testimagesave(_ sender: Any) {
@@ -66,7 +60,10 @@ class MarkerViewController: UIViewController {
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
     }
-    
+    //dismiss keyboard on tapping outside of text field
+    override func touchesBegan(_ touches: Set<UITouch>,with event: UIEvent?){
+        self.view.endEditing(true)
+    }
     func uploadPhoto(){
         let image_name = UUID().uuidString
         let imageRef = Storage.storage().reference(withPath: "image/\(image_name).jpg")

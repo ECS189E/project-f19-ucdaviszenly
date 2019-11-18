@@ -9,12 +9,6 @@ import UIKit
 import GoogleMaps
 import Firebase
 
-struct eventData {
-    var title: String = ""
-    var content: String = ""
-    var image: UIImage? = nil
-}
-
 
 class HomeViewController: UIViewController, GMSMapViewDelegate {
 
@@ -87,7 +81,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                 let marker = GMSMarker(position: coordinate)
                 marker.title = textField!.text ?? " "
                 marker.map = self.mapView
-                marker.userData = eventData(title: marker.title ?? "")
+
             }))
             self.present(alert, animated: true, completion: nil)
     }
