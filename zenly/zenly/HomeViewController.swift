@@ -23,7 +23,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     
     var docRef: DocumentReference!
     
-  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +31,41 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         locationManager.delegate = self as CLLocationManagerDelegate
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
-        
+        load_markers()
     }
     
     func createUser(){
         docRef = Firestore.firestore().document("User/\(phoneNumInE64)")
-        //let userName =
         
+    }
+    
+    func load_markers(){
+        let eventRef = docRef.collection("Event")
+        eventRef.getDocuments{ (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                //use forced unwarp here because it's written in offical doc of firestore
+                for document in querySnapshot!.documents {
+                    print("Data: \(document.data())")
+                    var la = 0.0;
+                    var lo = 0.0;
+                    for dic in document.data(){
+                        if(dic.key == "latitude"){
+                            let la_string = "\(dic.value)"
+                            la = Double(la_string) ?? 0
+                        }
+                        if(dic.key == "longitude"){
+                            let lo_string = "\(dic.value)"
+                            lo = Double(lo_string) ?? 0
+                        }
+                    }
+                    let position = CLLocationCoordinate2D(latitude: la, longitude: lo)
+                    let marker = GMSMarker(position: position)
+                    marker.map = self.mapView
+                }
+            }
+        }
     }
     
     private func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D) {
@@ -79,11 +106,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             alert.addAction(UIAlertAction(title:"Done", style: .default, handler: { _ in
                 let textField = alert.textFields?.first
                 let marker = GMSMarker(position: coordinate)
-                marker.title = textField!.text ?? " "
+                marker.title = textField?.text ?? " "
                 marker.map = self.mapView
-
+                self.selectedMarker = marker
             }))
             self.present(alert, animated: true, completion: nil)
+        // MARK: performSegue not working
+//            self.performSegue(withIdentifier: "showMarker", sender: self)
     }
     //go to MarkerView if tap on a marker
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
