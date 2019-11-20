@@ -31,7 +31,7 @@ class MarkerViewController: UIViewController {
         super.viewDidLoad()
         imagePicker.delegate = self
         setup()
-        //activityIndicator.isHidden = true
+        activityIndicator.isHidden = true
         deletePhotoBtn.isHidden = true
     }
     
@@ -46,9 +46,9 @@ class MarkerViewController: UIViewController {
 
     @IBAction func SaveButtonPressed(_ sender: Any) {
 
-        //DoneBtn.isUserInteractionEnabled = false
-        //activityIndicator.isHidden = false
-        //activityIndicator.startAnimating()
+        DoneBtn.isUserInteractionEnabled = false
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
 
         let content = textView.text ?? ""
         let title = title_field.text ?? ""
@@ -57,9 +57,15 @@ class MarkerViewController: UIViewController {
         let longitude = position.longitude
         let dataToSave: [String: Any] = ["content": content, "title": title, "latitude": latitude, "longitude": longitude, "date": date ]
         docRef.setData(dataToSave)
-        uploadPhoto()
-        
-        
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+        if imageView.image?.cgImage != nil || imageView.image?.ciImage != nil {
+            activityIndicator.isHidden = false
+            activityIndicator.startAnimating()
+            uploadPhoto()
+        }else{
+            DoneBtn.isUserInteractionEnabled = true
+        }
         
     }
 
@@ -71,6 +77,7 @@ class MarkerViewController: UIViewController {
         imageView.image = nil
         deletePhotoBtn.isHidden = true
     }
+    
     var imagePicker = UIImagePickerController()
     @IBAction func addImageButtonPressed(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
@@ -81,6 +88,7 @@ class MarkerViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>,with event: UIEvent?){
         self.view.endEditing(true)
     }
+    
     func uploadPhoto(){
         let image_name = UUID().uuidString
         let imageRef = Storage.storage().reference(withPath: "image/\(image_name).jpg")
@@ -105,10 +113,14 @@ class MarkerViewController: UIViewController {
                 self.imageURL = url?.absoluteString ?? ""
                 let dataToSave: [String: Any] = ["URL": self.imageURL]
                 self.docRef.updateData(dataToSave)
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                self.DoneBtn.isUserInteractionEnabled = true
             })
         }
         return
     }
+    
     func fetchData(){
         docRef.getDocument(completion: { (docNapShot, error) in
             guard let docNapShot = docNapShot, docNapShot.exists else {return}
@@ -126,8 +138,6 @@ class MarkerViewController: UIViewController {
                 }catch let err{
                   print("Error in fetch data:\(err)")
                 }
-                
-                
             }
         })
     }
