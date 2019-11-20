@@ -36,7 +36,6 @@ class MarkerViewController: UIViewController {
     }
     
     func setup(){
-          
         title_field.text = marker.title
         date = NSDate()
         let combinePosition = "la\(marker.position.latitude)lo\(marker.position.longitude)"
@@ -92,7 +91,7 @@ class MarkerViewController: UIViewController {
     func uploadPhoto(){
         let image_name = UUID().uuidString
         let imageRef = Storage.storage().reference(withPath: "image/\(image_name).jpg")
-        guard let image = imageView.image, let data = image.jpegData(compressionQuality: 1.0) else{
+        guard let image = imageView.image, let data = image.jpegData(compressionQuality: 0.5) else{
             print("error in upload photo")
             return
         }
