@@ -26,8 +26,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        
         inputField.becomeFirstResponder()
         loadingImg.isHidden = true
         // hide errorLabel at first

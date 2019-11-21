@@ -40,6 +40,7 @@ class MarkerViewController: UIViewController {
         date = NSDate()
         let combinePosition = "la\(marker.position.latitude)lo\(marker.position.longitude)"
         docRef = Firestore.firestore().document("User/\(phoneNumInE64)/Event/\(combinePosition)")
+        print("combiePosition: \(combinePosition)")
         fetchData()
     }
 
@@ -52,8 +53,8 @@ class MarkerViewController: UIViewController {
         let content = textView.text ?? ""
         let title = title_field.text ?? ""
         let position = marker.position
-        let latitude = position.latitude
-        let longitude = position.longitude
+        let latitude = "\(position.latitude)"
+        let longitude = "\(position.longitude)"
         let dataToSave: [String: Any] = ["content": content, "title": title, "latitude": latitude, "longitude": longitude, "date": date ]
         docRef.setData(dataToSave)
         activityIndicator.stopAnimating()
@@ -122,18 +123,23 @@ class MarkerViewController: UIViewController {
     
     func fetchData(){
         docRef.getDocument(completion: { (docNapShot, error) in
-            guard let docNapShot = docNapShot, docNapShot.exists else {return}
+            guard let docNapShot = docNapShot, docNapShot.exists else {
+                print("error in docnapshot")
+                return
+            }
             let myData = docNapShot.data()
             let content = myData?["content"] as? String ?? ""
             let title = myData?["title"] as? String ?? ""
             let urlkey = myData?["URL"] as? String ?? ""
             self.title_field.text = title
             self.textView.text = content
+            print("Fetch data success")
             if let url = URL(string: urlkey){
                 do{
                     let data = try Data(contentsOf: url)
                     self.imageView.image = UIImage(data: data)
                     self.deletePhotoBtn.isHidden = false
+                    print("Fatch image data success")
                 }catch let err{
                   print("Error in fetch data:\(err)")
                 }

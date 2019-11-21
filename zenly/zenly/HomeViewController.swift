@@ -60,7 +60,12 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                             lo = Double(lo_string) ?? 0
                         }
                     }
+//                    let mydata = document.data()
+//                    let latitude = mydata["latitude"] as? String ?? ""
+//                    let longitude = mydata["longitude"] as? String ?? ""
+//                    print("latitude: \(latitude), longitude: \(longitude)")
                     let position = CLLocationCoordinate2D(latitude: la, longitude: lo)
+                    print("la: \(la), lo: \(lo)")
                     let marker = GMSMarker(position: position)
                     marker.map = self.mapView
                 }
