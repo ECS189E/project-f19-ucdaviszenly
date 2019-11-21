@@ -12,7 +12,6 @@ import Firebase
 
 class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource  {
     
-    
 
     @IBOutlet weak var getLocationButton: UIButton!
     @IBOutlet weak var mapView: GMSMapView!
@@ -22,7 +21,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDele
     let locationManager = CLLocationManager()
     var selectedMarker = GMSMarker()
     var choices = ["rice","book","game","store","airplane"]
-    var selectedIcon = UIImage()
+    var selectedIconName = String()
     var docRef: DocumentReference!
     
     
@@ -52,6 +51,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDele
                     print("Data: \(document.data())")
                     var la = 0.0;
                     var lo = 0.0;
+                    //var iconName = "";
                     for dic in document.data(){
                         if(dic.key == "latitude"){
                             let la_string = "\(dic.value)"
@@ -61,12 +61,15 @@ class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDele
                             let lo_string = "\(dic.value)"
                             lo = Double(lo_string) ?? 0
                         }
+//                        if(dic.key == "icon"){
+//                            iconName = "\(dic.value)"
+//                        }
                     }
                     let position = CLLocationCoordinate2D(latitude: la, longitude: lo)
                     print("la: \(la), lo: \(lo)")
                     let marker = GMSMarker(position: position)
                     //update marker icon
-                    //marker.icon = ???
+                    //marker.iconView = UIImageView(image: UIImage(named: iconName))
                     marker.map = self.mapView
                 }
                 
@@ -130,6 +133,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDele
                 marker.title = "\(year)-\(month)-\(day) \(hour):00"
             }
             marker.map = self.mapView
+            
+            marker.iconView = UIImageView(image: UIImage(named: self.selectedIconName))
+         
             self.selectedMarker = marker
         }))
         self.present(alert, animated: true, completion: nil)
@@ -143,46 +149,37 @@ class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDele
         return choices.count
         
     }
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
-        //var myView = UIView(frame: CGRectMake(0, 0, pickerView.bounds.width - 30, 60))
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat
+    {
+        return 40
+    }
 
-        //var myImageView = UIImageView(frame: CGRectMake(0, 0, 50, 50))
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let myView = UIView(frame: CGRect(x: 0, y: 0, width:pickerView.bounds.width - 10, height: 30))
+        let myImageView = UIImageView(frame: CGRect(x: 100, y: 0, width: 30, height: 30))
         
-        var myImageView = UIImageView()
         switch row {
         case 0:
-            myImageView = UIImageView(image: #imageLiteral(resourceName: "rice"))
+            myImageView.image =  #imageLiteral(resourceName: "rice")
         case 1:
-            myImageView = UIImageView(image: #imageLiteral(resourceName: "book"))
+            myImageView.image =  #imageLiteral(resourceName: "book")
         case 2:
-            myImageView = UIImageView(image: #imageLiteral(resourceName: "game"))
+            myImageView.image =  #imageLiteral(resourceName: "game")
         case 3:
-            myImageView = UIImageView(image: #imageLiteral(resourceName: "store"))
+            myImageView.image =  #imageLiteral(resourceName: "store")
         case 4:
-            myImageView = UIImageView(image: #imageLiteral(resourceName: "airplane"))
+            myImageView.image =  #imageLiteral(resourceName: "airplane")
         default:
             myImageView.image = nil
-            return myImageView
+            print("no icon")
+           
         }
-        return myImageView
+        myView.addSubview(myImageView)
+        return myView
     }
-//    //show icon in picker view
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return choices[row]
-//    }
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if(row == 0){
-            self.selectedMarker.icon = #imageLiteral(resourceName: "rice")
-        }else if row == 1 {
-            self.selectedMarker.icon = #imageLiteral(resourceName: "book")
-        }else if row == 2 {
-            self.selectedMarker.icon = #imageLiteral(resourceName: "game")
-        }else if row == 3 {
-            self.selectedMarker.icon = #imageLiteral(resourceName: "store")
-        }else if row == 4 {
-            self.selectedMarker.icon = #imageLiteral(resourceName: "airplane")
-        }
-        
+        selectedIconName = choices[row]
     }
     //go to MarkerView if tap on a marker
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
@@ -202,7 +199,10 @@ class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDele
         }
         
     }
-  
+    @IBAction func EventListPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "list",sender: self)
+    }
+    
     @IBAction func logOutPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "logout",sender: self)
     }
