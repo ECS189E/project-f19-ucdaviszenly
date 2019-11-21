@@ -13,6 +13,7 @@
 		2C4523992363DC84000F284C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4523982363DC84000F284C /* Extensions.swift */; };
 		2C45239B23640AAD000F284C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C45239A23640AAD000F284C /* HomeViewController.swift */; };
 		2C497F34238122B500520A12 /* MarkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497F33238122B500520A12 /* MarkerViewController.swift */; };
+		2C497F362386501700520A12 /* MarkerPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497F352386501700520A12 /* MarkerPopUpViewController.swift */; };
 		2C80822D2356CF97009FCB96 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80822C2356CF97009FCB96 /* VerifyViewController.swift */; };
 		2CA9D6DA234C0866002ED627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9D6D9234C0866002ED627 /* AppDelegate.swift */; };
 		2CA9D6DC234C0866002ED627 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9D6DB234C0866002ED627 /* SceneDelegate.swift */; };
@@ -31,6 +32,7 @@
 		2C4523982363DC84000F284C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = zenly/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		2C45239A23640AAD000F284C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2C497F33238122B500520A12 /* MarkerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerViewController.swift; sourceTree = "<group>"; };
+		2C497F352386501700520A12 /* MarkerPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerPopUpViewController.swift; sourceTree = "<group>"; };
 		2C80822C2356CF97009FCB96 /* VerifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
 		2CA9D6D6234C0866002ED627 /* zenly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zenly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CA9D6D9234C0866002ED627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				2C80822C2356CF97009FCB96 /* VerifyViewController.swift */,
 				2C45239A23640AAD000F284C /* HomeViewController.swift */,
 				2C497F33238122B500520A12 /* MarkerViewController.swift */,
+				2C497F352386501700520A12 /* MarkerPopUpViewController.swift */,
 				2CA9D6DF234C0866002ED627 /* Main.storyboard */,
 				2CA9D6E2234C0867002ED627 /* Assets.xcassets */,
 				2CA9D6E4234C0867002ED627 /* LaunchScreen.storyboard */,
@@ -246,6 +249,7 @@
 				2CA9D6DE234C0866002ED627 /* LoginViewController.swift in Sources */,
 				2131931323820E0500733BC7 /* classes.swift in Sources */,
 				2C4523992363DC84000F284C /* Extensions.swift in Sources */,
+				2C497F362386501700520A12 /* MarkerPopUpViewController.swift in Sources */,
 				2C80822D2356CF97009FCB96 /* VerifyViewController.swift in Sources */,
 				2C45239B23640AAD000F284C /* HomeViewController.swift in Sources */,
 				2CA9D6DA234C0866002ED627 /* AppDelegate.swift in Sources */,
@@ -395,7 +399,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 27FZ5HNHJV;
+				DEVELOPMENT_TEAM = TR9332WN2Q;
 				INFOPLIST_FILE = zenly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -413,8 +417,9 @@
 			baseConfigurationReference = 5DB95D10FFFFD3A53DD5B912 /* Pods-zenly.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 27FZ5HNHJV;
+				DEVELOPMENT_TEAM = TR9332WN2Q;
 				INFOPLIST_FILE = zenly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -422,6 +427,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.ucdavis.cs.zenly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

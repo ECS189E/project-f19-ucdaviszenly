@@ -91,9 +91,8 @@ class MarkerViewController: UIViewController {
     @IBAction func deleteButtonPressed(_ sender: Any) {
         docRef.getDocument(completion: {(docNapShot, error) in
             guard let docNapShot = docNapShot, docNapShot.exists else {
-                
-                print("error in docnapshot")
-               // self.performSegue(withIdentifier: "deleteMarker", sender: self)
+                print("error in docnapshot, nothing to be deleted")
+                self.delegate?.reload_data()
                 return
             }
             let myData = docNapShot.data()
@@ -116,13 +115,7 @@ class MarkerViewController: UIViewController {
         
         
     }
-    //send marker.userData to MarkerViewController
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "deleteMarker" {
-            let dest : HomeViewController = segue.destination as! HomeViewController
-            dest.deletedMarker = self.marker
-        }
-    }
+
     var imagePicker = UIImagePickerController()
     @IBAction func addImageButtonPressed(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
