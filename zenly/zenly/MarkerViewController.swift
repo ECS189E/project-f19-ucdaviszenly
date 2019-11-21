@@ -19,6 +19,7 @@ protocol markerdelegate{
 class MarkerViewController: UIViewController {
 
   
+    @IBOutlet weak var deleteMarkerBtn: UIButton!
     @IBOutlet weak var DoneBtn: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var addImageBtn: UIButton!
@@ -53,6 +54,7 @@ class MarkerViewController: UIViewController {
     @IBAction func SaveButtonPressed(_ sender: Any) {
 
         DoneBtn.isUserInteractionEnabled = false
+        deleteMarkerBtn.isUserInteractionEnabled = false
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
 
@@ -71,7 +73,9 @@ class MarkerViewController: UIViewController {
             uploadPhoto()
         }else{
             DoneBtn.isUserInteractionEnabled = true
+            deleteMarkerBtn.isUserInteractionEnabled = true
         }
+        print("content: \(content) title: \(title)")
         
     }
 
@@ -87,7 +91,9 @@ class MarkerViewController: UIViewController {
     @IBAction func deleteButtonPressed(_ sender: Any) {
         docRef.getDocument(completion: {(docNapShot, error) in
             guard let docNapShot = docNapShot, docNapShot.exists else {
+                
                 print("error in docnapshot")
+               // self.performSegue(withIdentifier: "deleteMarker", sender: self)
                 return
             }
             let myData = docNapShot.data()
@@ -110,7 +116,13 @@ class MarkerViewController: UIViewController {
         
         
     }
-    
+    //send marker.userData to MarkerViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "deleteMarker" {
+            let dest : HomeViewController = segue.destination as! HomeViewController
+            dest.deletedMarker = self.marker
+        }
+    }
     var imagePicker = UIImagePickerController()
     @IBAction func addImageButtonPressed(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
@@ -149,6 +161,7 @@ class MarkerViewController: UIViewController {
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
                 self.DoneBtn.isUserInteractionEnabled = true
+                self.deleteMarkerBtn.isUserInteractionEnabled = true
             })
         }
         return

@@ -17,7 +17,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var logOut: UIBarButtonItem!
     var phoneNumInE64: String = ""
-    
+    var deletedMarker = GMSMarker()
     let locationManager = CLLocationManager()
     var selectedMarker = GMSMarker()
     
@@ -32,6 +32,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
         load_markers()
+        print(deletedMarker.position)
     }
     
     func selectUser(){
@@ -43,6 +44,8 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         eventRef.getDocuments{ (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
+                self.deletedMarker.map = nil
+                
             } else {
                 //use forced unwarp here because it's written in offical doc of firestore
                 for document in querySnapshot!.documents {
@@ -59,15 +62,17 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                             lo = Double(lo_string) ?? 0
                         }
                     }
-//                    let mydata = document.data()
-//                    let latitude = mydata["latitude"] as? String ?? ""
-//                    let longitude = mydata["longitude"] as? String ?? ""
-//                    print("latitude: \(latitude), longitude: \(longitude)")
                     let position = CLLocationCoordinate2D(latitude: la, longitude: lo)
                     print("la: \(la), lo: \(lo)")
                     let marker = GMSMarker(position: position)
+                    // do not show deleted marker
+//                    if(marker.position.latitude != self.deletedMarker.position.latitude || marker.position.longitude != self.deletedMarker.position.longitude){
+//                        marker.map = self.mapView
+//                    }
                     marker.map = self.mapView
+                    //self.deletedMarker.map = nil
                 }
+                
             }
         }
     }
