@@ -78,6 +78,32 @@ class MarkerViewController: UIViewController {
         deletePhotoBtn.isHidden = true
     }
     
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+        docRef.getDocument(completion: {(docNapShot, error) in
+            guard let docNapShot = docNapShot, docNapShot.exists else {
+                print("error in docnapshot")
+                return
+            }
+            let myData = docNapShot.data()
+            let urlkey = myData?["URL"] as? String ?? ""
+            if urlkey != "" {
+                let storagePath = urlkey
+                let imageRef = Storage.storage().reference(forURL: storagePath)
+                imageRef.delete(completion: { error in
+                    if error != nil{
+                        print("Error in deletion from server")
+                    }
+                    print("Success in deletion from server")
+                })
+                
+            }
+            self.docRef.delete()
+            self.dismiss(animated: true, completion: nil)
+        })
+        
+        
+    }
+    
     var imagePicker = UIImagePickerController()
     @IBAction func addImageButtonPressed(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
@@ -153,7 +179,8 @@ extension MarkerViewController: UIImagePickerControllerDelegate, UINavigationCon
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             imageView.image = image
         }
-        dismiss(animated: true, completion: nil)
         deletePhotoBtn.isHidden = false
+        dismiss(animated: true, completion: nil)
+        
     }
 }

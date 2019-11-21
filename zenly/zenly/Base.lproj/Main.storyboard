@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hjn-oQ-yFa">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -429,6 +429,14 @@
                                     <action selector="DonePressed:" destination="pzw-CA-hru" eventType="touchUpInside" id="3q1-4M-b1y"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6h-zs-RQb">
+                                <rect key="frame" x="183" y="707" width="70" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteButtonPressed:" destination="pzw-CA-hru" eventType="touchUpInside" id="DjB-22-E6f"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -441,11 +449,13 @@
                             <constraint firstItem="6t7-wT-VQc" firstAttribute="top" secondItem="onT-DG-M0g" secondAttribute="bottom" constant="66" id="AoY-of-LEx"/>
                             <constraint firstItem="onT-DG-M0g" firstAttribute="top" secondItem="CAQ-Yv-JVX" secondAttribute="bottom" constant="8" id="Cww-uk-ogU"/>
                             <constraint firstItem="fUp-aO-rn0" firstAttribute="leading" secondItem="cXb-I7-bRa" secondAttribute="leading" constant="30" id="FsF-yY-6fI"/>
+                            <constraint firstItem="cXb-I7-bRa" firstAttribute="bottom" secondItem="b6h-zs-RQb" secondAttribute="bottom" constant="29" id="GhL-aO-d3J"/>
                             <constraint firstItem="jrI-CX-Mkn" firstAttribute="trailing" secondItem="i8I-FU-CT4" secondAttribute="trailing" id="JUX-9O-6LS"/>
                             <constraint firstItem="jrI-CX-Mkn" firstAttribute="leading" secondItem="Q3t-fQ-WpL" secondAttribute="trailing" constant="8" id="JVc-CS-0ix"/>
                             <constraint firstItem="CAQ-Yv-JVX" firstAttribute="top" secondItem="cXb-I7-bRa" secondAttribute="top" constant="20" id="KDZ-gt-AkF"/>
                             <constraint firstItem="jj8-1k-XoR" firstAttribute="top" secondItem="i8I-FU-CT4" secondAttribute="bottom" constant="-116" id="LCS-oJ-fFc"/>
                             <constraint firstItem="Q3t-fQ-WpL" firstAttribute="centerY" secondItem="jrI-CX-Mkn" secondAttribute="centerY" id="Mvg-Cw-bx1"/>
+                            <constraint firstItem="b6h-zs-RQb" firstAttribute="top" secondItem="i8I-FU-CT4" secondAttribute="bottom" constant="104" id="QdB-1r-pz7"/>
                             <constraint firstItem="jrI-CX-Mkn" firstAttribute="top" secondItem="jj8-1k-XoR" secondAttribute="bottom" constant="121" id="QlE-lg-obd"/>
                             <constraint firstItem="cXb-I7-bRa" firstAttribute="bottom" secondItem="i8I-FU-CT4" secondAttribute="bottom" constant="175" id="RiR-ah-bw9"/>
                             <constraint firstItem="jj8-1k-XoR" firstAttribute="leading" secondItem="cXb-I7-bRa" secondAttribute="leading" constant="122" id="TTd-ie-OVy"/>
@@ -456,6 +466,7 @@
                             <constraint firstItem="CAQ-Yv-JVX" firstAttribute="trailing" secondItem="cXb-I7-bRa" secondAttribute="trailing" id="jGm-xZ-6NR"/>
                             <constraint firstItem="jrI-CX-Mkn" firstAttribute="leading" secondItem="cXb-I7-bRa" secondAttribute="leading" constant="287" id="mOS-ih-BiB"/>
                             <constraint firstItem="cXb-I7-bRa" firstAttribute="bottom" secondItem="onT-DG-M0g" secondAttribute="bottom" constant="451" id="nGe-9T-Tse"/>
+                            <constraint firstItem="cXb-I7-bRa" firstAttribute="trailing" secondItem="b6h-zs-RQb" secondAttribute="trailing" constant="122" id="noU-sh-EE7"/>
                             <constraint firstItem="CAQ-Yv-JVX" firstAttribute="leading" secondItem="cXb-I7-bRa" secondAttribute="leading" id="q2P-pS-Aqs"/>
                             <constraint firstItem="onT-DG-M0g" firstAttribute="leading" secondItem="cXb-I7-bRa" secondAttribute="leading" constant="30" id="vLJ-z9-p7A"/>
                             <constraint firstItem="i8I-FU-CT4" firstAttribute="leading" secondItem="cXb-I7-bRa" secondAttribute="leading" constant="30" id="xUb-l7-Mum"/>
