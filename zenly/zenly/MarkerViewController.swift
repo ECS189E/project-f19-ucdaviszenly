@@ -11,6 +11,11 @@ import GoogleMaps
 import Firebase
 import Dispatch
 
+//declare delegate
+protocol markerdelegate{
+    func reload_data()
+}
+
 class MarkerViewController: UIViewController {
 
   
@@ -26,6 +31,7 @@ class MarkerViewController: UIViewController {
     var marker = GMSMarker()
     var docRef: DocumentReference!
     var date = NSDate()
+    var delegate: markerdelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +76,7 @@ class MarkerViewController: UIViewController {
     }
 
     @IBAction func DonePressed(_ sender: Any) {
-        self.dismiss(animated: true)
+        self.delegate?.reload_data()
     }
     
     @IBAction func deletePhotoPressed(_ sender: Any) {
@@ -98,7 +104,8 @@ class MarkerViewController: UIViewController {
                 
             }
             self.docRef.delete()
-            self.dismiss(animated: true, completion: nil)
+//            self.dismiss(animated: true, completion: nil)
+            self.delegate?.reload_data()
         })
         
         

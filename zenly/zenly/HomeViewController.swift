@@ -27,16 +27,15 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         phoneNumInE64 = Storagelocal.phoneNumberInE164 ?? "Error"
-        createUser()
+        selectUser()
         locationManager.delegate = self as CLLocationManagerDelegate
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
         load_markers()
     }
     
-    func createUser(){
+    func selectUser(){
         docRef = Firestore.firestore().document("User/\(phoneNumInE64)")
-        
     }
     
     func load_markers(){
@@ -132,6 +131,8 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             dest.marker = self.selectedMarker
             dest.phoneNumInE64 = self.phoneNumInE64
             dest.date = NSDate()
+            dest.delegate = self
+            mapView.clear()
         }
         
     }
@@ -168,7 +169,17 @@ extension HomeViewController: CLLocationManagerDelegate {
   }
 }
 
-
+extension HomeViewController: markerdelegate{
+    func reload_data() {
+        self.dismiss(animated: true, completion: {
+            print("clear")
+            self.mapView.clear()
+            self.load_markers()
+        })
+    }
+    
+    
+}
 
   
             
