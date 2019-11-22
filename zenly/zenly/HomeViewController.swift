@@ -9,8 +9,8 @@ import UIKit
 import GoogleMaps
 import Firebase
 
-
-class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource  {
+class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate,
+UINavigationControllerDelegate  {
     
 
     @IBOutlet weak var getLocationButton: UIButton!
@@ -20,10 +20,11 @@ class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDele
     var phoneNumInE64: String = ""
     let locationManager = CLLocationManager()
     var selectedMarker = GMSMarker()
-    var choices = ["rice","book","game","store","airplane"]
-    var selectedIconName = String()
+    var choices = ["pin","book","game","store","airplane","rice"]
+    var selectedIconName = "pin"
     var docRef: DocumentReference!
-    
+    var imageTook = UIImage()
+    var curMarkerExist = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDele
                     print("Data: \(document.data())")
                     var la = 0.0;
                     var lo = 0.0;
-                    //var iconName = "";
+                    var icon = "";
                     for dic in document.data(){
                         if(dic.key == "latitude"){
                             let la_string = "\(dic.value)"
@@ -61,15 +62,20 @@ class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDele
                             let lo_string = "\(dic.value)"
                             lo = Double(lo_string) ?? 0
                         }
-//                        if(dic.key == "icon"){
-//                            iconName = "\(dic.value)"
-//                        }
+                        if(dic.key == "icon"){
+                            icon = "\(dic.value)"
+                            
+                        }
                     }
                     let position = CLLocationCoordinate2D(latitude: la, longitude: lo)
-                    print("la: \(la), lo: \(lo)")
+                    print("la: \(la), lo: \(lo),icon: \(icon)")
+                    let currentposition = self.locationManager.location!.coordinate
+                    if (currentposition.latitude == la && currentposition.longitude == lo){
+                        self.curMarkerExist = true
+                        
+                    }
                     let marker = GMSMarker(position: position)
-                    //update marker icon
-                    //marker.iconView = UIImageView(image: UIImage(named: iconName))
+                    marker.iconView = UIImageView(image: UIImage(named: icon))
                     marker.map = self.mapView
                 }
                 
@@ -99,15 +105,63 @@ class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDele
       }
     }
 
-    @IBAction func ShowAddrPressed(_ sender: Any) {
+    @IBAction func CameraPressed(_ sender: Any) {
         guard let position = self.locationManager.location?.coordinate else { return  }
         reverseGeocodeCoordinate(position)
+        if(curMarkerExist){
+            let alert = UIAlertController(title: "Error", message: "Current location already has a marker", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        let marker = GMSMarker(position: position)
+        marker.title = self.getTime()
+        marker.map = self.mapView
+        marker.icon = #imageLiteral(resourceName: "pin")
+        self.selectedMarker = marker
+        //mapView
+        //var onMap = map.getBounds().contains(marker.getPosition());
+        if UIImagePickerController.isSourceTypeAvailable( .camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            //imagePicker.sourceType = .photoLibrary
+            imagePicker.sourceType = .camera
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }else{
+            print("no camera")
+        }
         
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+      
+        guard let image = info[.editedImage] as? UIImage else {
+            print("No image found")
+            return
+        }
+        print("image size = \(image.size)")
+        imageTook = image
+        
+        self.performSegue(withIdentifier: "showMarker", sender: self)
+    }
+    func getTime()-> String{
+        let date = Date()
+        let calendar = Calendar.current
+        let min = calendar.component(.minute, from: date)
+        let hour = calendar.component(.hour, from: date)
+        let day = calendar.component(.day, from: date)
+        let month = calendar.component(.month, from: date)
+        let year = calendar.component(.year, from: date)
+        return "\(year)-\(month)-\(day) \(hour):\(min)"
     }
     //long press at a place to show a popup view to add a marker
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
-          
-        let alert = UIAlertController(title: "Add Event", message: "\n\n\n\n\n\n", preferredStyle: .alert)
+        reverseGeocodeCoordinate(coordinate)
+        let alert = UIAlertController(title: "Add Event", message: "Choose pin icon and name the event: \n\n\n\n\n\n", preferredStyle: .alert)
+        
         let pickerView = UIPickerView(frame: CGRect(x: 0, y: 30, width: 260, height: 162))
         alert.view.addSubview(pickerView)
         pickerView.dataSource = self
@@ -122,21 +176,17 @@ class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDele
         alert.addAction(UIAlertAction(title:"Done", style: .default, handler: { _ in
             let textField = alert.textFields?.first
             let marker = GMSMarker(position: coordinate)
-            let date = Date()
-            let calendar = Calendar.current
-            let hour = calendar.component(.hour, from: date)
-            let day = calendar.component(.day, from: date)
-            let month = calendar.component(.month, from: date)
-            let year = calendar.component(.year, from: date)
+            
             marker.title = textField?.text!
             if( marker.title == ""){
-                marker.title = "\(year)-\(month)-\(day) \(hour):00"
+                marker.title = self.getTime()
             }
             marker.map = self.mapView
             
             marker.iconView = UIImageView(image: UIImage(named: self.selectedIconName))
-         
             self.selectedMarker = marker
+            //self.performSegue(withIdentifier: "showMarker", sender: self)
+            
         }))
         self.present(alert, animated: true, completion: nil)
     }
@@ -155,12 +205,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDele
     }
 
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let myView = UIView(frame: CGRect(x: 0, y: 0, width:pickerView.bounds.width - 10, height: 30))
+        let myView = UIView(frame: CGRect(x: 0, y: 0, width:pickerView.bounds.width , height: 30))
         let myImageView = UIImageView(frame: CGRect(x: 100, y: 0, width: 30, height: 30))
         
         switch row {
+        //image: 32x32 px
         case 0:
-            myImageView.image =  #imageLiteral(resourceName: "rice")
+            myImageView.image =  #imageLiteral(resourceName: "pin")
         case 1:
             myImageView.image =  #imageLiteral(resourceName: "book")
         case 2:
@@ -169,10 +220,10 @@ class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDele
             myImageView.image =  #imageLiteral(resourceName: "store")
         case 4:
             myImageView.image =  #imageLiteral(resourceName: "airplane")
+        case 5:
+            myImageView.image =  #imageLiteral(resourceName: "rice")
         default:
-            myImageView.image = nil
-            print("no icon")
-           
+            myImageView.image = #imageLiteral(resourceName: "pin")
         }
         myView.addSubview(myImageView)
         return myView
@@ -194,8 +245,12 @@ class HomeViewController: UIViewController, GMSMapViewDelegate, UIPickerViewDele
             dest.marker = self.selectedMarker
             dest.phoneNumInE64 = self.phoneNumInE64
             dest.date = NSDate()
+            dest.icon = self.selectedIconName
             dest.delegate = self
             mapView.clear()
+            if imageTook.size != CGSize(width: 0.0, height: 0.0) {
+                dest.imageTook = self.imageTook
+            }
         }
         
     }

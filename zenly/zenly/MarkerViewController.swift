@@ -29,22 +29,31 @@ class MarkerViewController: UIViewController {
     @IBOutlet weak var title_field: UITextField!
     @IBOutlet weak var textView: UITextView!
     var phoneNumInE64: String = ""
+    var icon: String = ""
     var marker = GMSMarker()
     var docRef: DocumentReference!
     var date = NSDate()
     var delegate: markerdelegate?
+    var imageTook = UIImage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imagePicker.delegate = self
         setup()
         activityIndicator.isHidden = true
-        deletePhotoBtn.isHidden = true
+        
+        print(imageTook.size)
     }
     
     func setup(){
         title_field.text = marker.title
         date = NSDate()
+        if imageTook.size != CGSize(width: 0.0, height: 0.0) {
+            imageView.image = imageTook
+            deletePhotoBtn.isHidden = false
+        }else{
+            deletePhotoBtn.isHidden = true
+        }
+        
         let combinePosition = "la\(marker.position.latitude)lo\(marker.position.longitude)"
         docRef = Firestore.firestore().document("User/\(phoneNumInE64)/Event/\(combinePosition)")
         print("combiePosition: \(combinePosition)")
@@ -63,7 +72,8 @@ class MarkerViewController: UIViewController {
         let position = marker.position
         let latitude = "\(position.latitude)"
         let longitude = "\(position.longitude)"
-        let dataToSave: [String: Any] = ["content": content, "title": title, "latitude": latitude, "longitude": longitude, "date": date ]
+        let dataToSave: [String: Any] = ["content": content, "title": title, "latitude": latitude, "longitude": longitude, "date": date, "icon":icon ]
+        print(icon)
         docRef.setData(dataToSave)
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true
@@ -109,18 +119,36 @@ class MarkerViewController: UIViewController {
                 
             }
             self.docRef.delete()
-//            self.dismiss(animated: true, completion: nil)
             self.delegate?.reload_data()
         })
         
         
     }
 
-    var imagePicker = UIImagePickerController()
+    
     @IBAction func addImageButtonPressed(_ sender: Any) {
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = true
-        present(imagePicker, animated: true, completion: nil)
+         let alert = UIAlertController(title: "Select image from:", message: "", preferredStyle: .alert)
+         
+        alert.addAction(UIAlertAction(title: "camera", style: .default, handler: { _ in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.sourceType = .camera;
+                imagePicker.allowsEditing = true
+                imagePicker.delegate = self
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "library", style: .default, handler: { _ in
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.sourceType = .photoLibrary
+                imagePicker.allowsEditing = true
+                imagePicker.delegate = self
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     //dismiss keyboard on tapping outside of text field
     override func touchesBegan(_ touches: Set<UITouch>,with event: UIEvent?){
