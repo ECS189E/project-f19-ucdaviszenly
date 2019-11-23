@@ -41,6 +41,7 @@ UINavigationControllerDelegate  {
     }
     
     func load_markers(){
+        curMarkerExist = false
         let eventRef = docRef.collection("Event")
         eventRef.getDocuments{ (querySnapshot, error) in
             if let error = error {
@@ -69,11 +70,7 @@ UINavigationControllerDelegate  {
                     }
                     let position = CLLocationCoordinate2D(latitude: la, longitude: lo)
                     print("la: \(la), lo: \(lo),icon: \(icon)")
-                    let currentposition = self.locationManager.location!.coordinate
-                    if (currentposition.latitude == la && currentposition.longitude == lo){
-                        self.curMarkerExist = true
-                        
-                    }
+                    self.checkCurrentLocation(la,lo)
                     let marker = GMSMarker(position: position)
                     marker.iconView = UIImageView(image: UIImage(named: icon))
                     marker.map = self.mapView
@@ -82,7 +79,14 @@ UINavigationControllerDelegate  {
             }
         }
     }
-    
+    func checkCurrentLocation(_ la: Double, _ lo: Double ){
+        guard let currentposition = self.locationManager.location?.coordinate else {
+            return
+        }
+        if (currentposition.latitude == la && currentposition.longitude == lo){
+            self.curMarkerExist = true
+        }
+    }
     private func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D) {
       //turn a coordinate into a street address.
       let geocoder = GMSGeocoder()
@@ -119,12 +123,9 @@ UINavigationControllerDelegate  {
         marker.map = self.mapView
         marker.icon = #imageLiteral(resourceName: "pin")
         self.selectedMarker = marker
-        //mapView
-        //var onMap = map.getBounds().contains(marker.getPosition());
         if UIImagePickerController.isSourceTypeAvailable( .camera) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
-            //imagePicker.sourceType = .photoLibrary
             imagePicker.sourceType = .camera
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)

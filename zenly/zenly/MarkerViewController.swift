@@ -99,6 +99,7 @@ class MarkerViewController: UIViewController {
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
+        
         docRef.getDocument(completion: {(docNapShot, error) in
             guard let docNapShot = docNapShot, docNapShot.exists else {
                 print("error in docnapshot, nothing to be deleted")
@@ -136,6 +137,8 @@ class MarkerViewController: UIViewController {
                 imagePicker.allowsEditing = true
                 imagePicker.delegate = self
                 self.present(imagePicker, animated: true, completion: nil)
+            }else{
+                print("no camera")
             }
         }))
         alert.addAction(UIAlertAction(title: "library", style: .default, handler: { _ in
@@ -145,6 +148,8 @@ class MarkerViewController: UIViewController {
                 imagePicker.allowsEditing = true
                 imagePicker.delegate = self
                 self.present(imagePicker, animated: true, completion: nil)
+            }else{
+                print("no Library")
             }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
