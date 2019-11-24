@@ -80,13 +80,13 @@ class MarkerViewController: UIViewController {
         if imageView.image?.cgImage != nil || imageView.image?.ciImage != nil {
             activityIndicator.isHidden = false
             activityIndicator.startAnimating()
-            uploadPhoto()
+            uploadPhoto(imagename: "\(latitude)+\(longitude)")
         }else{
             DoneBtn.isUserInteractionEnabled = true
             deleteMarkerBtn.isUserInteractionEnabled = true
         }
         print("content: \(content) title: \(title)")
-        
+//        self.delegate?.reload_data()
     }
 
     @IBAction func DonePressed(_ sender: Any) {
@@ -160,9 +160,9 @@ class MarkerViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    func uploadPhoto(){
-        let image_name = UUID().uuidString
-        let imageRef = Storage.storage().reference(withPath: "image/\(image_name).jpg")
+    func uploadPhoto(imagename: String){
+//        let image_name = UUID().uuidString
+        let imageRef = Storage.storage().reference(withPath: "image/\(imagename).jpg")
         guard let image = imageView.image, let data = image.jpegData(compressionQuality: 0.5) else{
             print("error in upload photo")
             return
@@ -211,7 +211,7 @@ class MarkerViewController: UIViewController {
                     let data = try Data(contentsOf: url)
                     self.imageView.image = UIImage(data: data)
                     self.deletePhotoBtn.isHidden = false
-                    print("Fatch image data success")
+                    print("Fetch image data success")
                 }catch let err{
                   print("Error in fetch data:\(err)")
                 }
