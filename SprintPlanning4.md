@@ -1,4 +1,4 @@
-# Sprint Planning 3
+# Sprint Planning 4
 Time: November 24th, 2019
 
 Trello Link: https://trello.com/b/uB9ti7YQ/ucdavis-zenly
