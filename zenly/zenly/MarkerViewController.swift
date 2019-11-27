@@ -33,8 +33,11 @@ class MarkerViewController: UIViewController {
     var marker = GMSMarker()
     var docRef: DocumentReference!
     var date = NSDate()
+    var dateStr = ""
     var delegate: markerdelegate?
     var imageTook = UIImage()
+    var targetPath = ""
+    //var dismissFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,19 +48,29 @@ class MarkerViewController: UIViewController {
     }
     
     func setup(){
-        title_field.text = marker.title
-        date = NSDate()
-        if imageTook.size != CGSize(width: 0.0, height: 0.0) {
-            imageView.image = imageTook
-            deletePhotoBtn.isHidden = false
+        if (targetPath != ""){
+            docRef = Firestore.firestore().document(targetPath)
+            fetchData()
         }else{
-            deletePhotoBtn.isHidden = true
+            title_field.text = marker.title
+            date = NSDate()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = DateFormatter.Style.long
+            dateStr = dateFormatter.string(from: date as Date)
+            
+            if imageTook.size != CGSize(width: 0.0, height: 0.0) {
+                imageView.image = imageTook
+                deletePhotoBtn.isHidden = false
+            }else{
+                deletePhotoBtn.isHidden = true
+            }
+            
+            let combinePosition = "la\(marker.position.latitude)lo\(marker.position.longitude)"
+            docRef = Firestore.firestore().document("User/\(phoneNumInE64)/Event/\(combinePosition)")
+            print("combiePosition: \(combinePosition)")
+            fetchData()
         }
         
-        let combinePosition = "la\(marker.position.latitude)lo\(marker.position.longitude)"
-        docRef = Firestore.firestore().document("User/\(phoneNumInE64)/Event/\(combinePosition)")
-        print("combiePosition: \(combinePosition)")
-        fetchData()
     }
 
     @IBAction func SaveButtonPressed(_ sender: Any) {
@@ -72,7 +85,7 @@ class MarkerViewController: UIViewController {
         let position = marker.position
         let latitude = "\(position.latitude)"
         let longitude = "\(position.longitude)"
-        let dataToSave: [String: Any] = ["content": content, "title": title, "latitude": latitude, "longitude": longitude, "date": date, "icon":icon ]
+        let dataToSave: [String: Any] = ["content": content, "title": title, "latitude": latitude, "longitude": longitude, "date": dateStr, "icon":icon ]
         print(icon)
         docRef.setData(dataToSave)
         activityIndicator.stopAnimating()
@@ -91,6 +104,7 @@ class MarkerViewController: UIViewController {
 
     @IBAction func DonePressed(_ sender: Any) {
         self.delegate?.reload_data()
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func deletePhotoPressed(_ sender: Any) {
@@ -122,7 +136,6 @@ class MarkerViewController: UIViewController {
             self.docRef.delete()
             self.delegate?.reload_data()
         })
-        
         
     }
 

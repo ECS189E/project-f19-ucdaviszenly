@@ -25,6 +25,11 @@ UINavigationControllerDelegate  {
     var docRef: DocumentReference!
     var imageTook = UIImage()
     var curMarkerExist = false
+    var eventNum = 0
+    var title_Vec = [String]()
+    var icon_Vec = [String]()
+    var time_Vec = [String]()
+    var path_Vec = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +39,11 @@ UINavigationControllerDelegate  {
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
         load_markers()
+        self.imageTook = UIImage()
+        
+        
     }
+
     
     func selectUser(){
         docRef = Firestore.firestore().document("User/\(phoneNumInE64)")
@@ -50,9 +59,8 @@ UINavigationControllerDelegate  {
             } else {
                 //use forced unwarp here because it's written in offical doc of firestore
                 for document in querySnapshot!.documents {
-                    print("Data: \(document.data())")
-                    var la = 0.0;
-                    var lo = 0.0;
+                    var la = 0.0
+                    var lo = 0.0
                     var icon = "";
                     for dic in document.data(){
                         if(dic.key == "latitude"){
@@ -65,16 +73,35 @@ UINavigationControllerDelegate  {
                         }
                         if(dic.key == "icon"){
                             icon = "\(dic.value)"
-                            
+                
                         }
+                        if(dic.key == "title"){
+                            self.title_Vec.append("\(dic.value)")
+                        }
+                        if(dic.key == "date"){
+                            self.time_Vec.append("\(dic.value)")
+                           
+                        }
+                        
+                        
                     }
+                    
+                    let n = document.data()["URL"] as? String ?? "https://firebasestorage.googleapis.com/v0/b/ecs189e-project.appspot.com/o/image%2Fdefault.jpg?alt=media&token=de615864-aa76-4e4e-b078-e963254fdf4b"
+                    self.icon_Vec.append(n)
+                    
+                    
+                    let path = "la\(la)lo\(lo)"
+                    self.path_Vec.append("User/\(self.phoneNumInE64)/Event/\(path)")
+                    print("path in home is \(String(describing: self.path_Vec.last))")
+                    
                     let position = CLLocationCoordinate2D(latitude: la, longitude: lo)
-                    print("la: \(la), lo: \(lo),icon: \(icon)")
+                   
                     self.checkCurrentLocation(la,lo)
                     let marker = GMSMarker(position: position)
                     marker.iconView = UIImageView(image: UIImage(named: icon))
                     marker.map = self.mapView
                 }
+                self.eventNum = querySnapshot?.count ?? 0
                 
             }
         }
@@ -252,6 +279,18 @@ UINavigationControllerDelegate  {
             if imageTook.size != CGSize(width: 0.0, height: 0.0) {
                 dest.imageTook = self.imageTook
             }
+        }
+        
+        if segue.identifier == "list" {
+           let dest : EventsViewController = segue.destination as! EventsViewController
+            dest.phoneNum = self.phoneNumInE64
+            dest.eventCount = self.eventNum
+            dest.titleVec = self.title_Vec
+            dest.timeVec = self.time_Vec
+            dest.iconVec = self.icon_Vec
+            dest.pathVec = self.path_Vec
+            
+                  
         }
         
     }

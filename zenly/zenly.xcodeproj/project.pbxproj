@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210E9316238B656E00EBA179 /* DiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E9315238B656E00EBA179 /* DiaryTableViewCell.swift */; };
 		2131931323820E0500733BC7 /* classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2131931223820E0500733BC7 /* classes.swift */; };
 		21319336238672CD00733BC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21319335238672CD00733BC7 /* GoogleService-Info.plist */; };
 		2C4523952363DC5B000F284C /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4523942363DC5B000F284C /* Api.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		0DA34E14B6AC53816B2E7B8E /* Pods-wallet-1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wallet-1.debug.xcconfig"; path = "Target Support Files/Pods-wallet-1/Pods-wallet-1.debug.xcconfig"; sourceTree = "<group>"; };
+		210E9315238B656E00EBA179 /* DiaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewCell.swift; sourceTree = "<group>"; };
 		2131931223820E0500733BC7 /* classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = classes.swift; path = zenly/classes.swift; sourceTree = SOURCE_ROOT; };
 		21319335238672CD00733BC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2C4523942363DC5B000F284C /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Api.swift; path = zenly/Api.swift; sourceTree = SOURCE_ROOT; };
@@ -100,6 +102,7 @@
 				2C45239A23640AAD000F284C /* HomeViewController.swift */,
 				2C497F33238122B500520A12 /* MarkerViewController.swift */,
 				2C497F352386501700520A12 /* EventsViewController.swift */,
+				210E9315238B656E00EBA179 /* DiaryTableViewCell.swift */,
 				2CA9D6DF234C0866002ED627 /* Main.storyboard */,
 				2CA9D6E2234C0867002ED627 /* Assets.xcassets */,
 				2CA9D6E4234C0867002ED627 /* LaunchScreen.storyboard */,
@@ -244,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				210E9316238B656E00EBA179 /* DiaryTableViewCell.swift in Sources */,
 				2C497F34238122B500520A12 /* MarkerViewController.swift in Sources */,
 				2C4523952363DC5B000F284C /* Api.swift in Sources */,
 				2CA9D6DE234C0866002ED627 /* LoginViewController.swift in Sources */,
@@ -398,15 +402,18 @@
 			baseConfigurationReference = F3AE23CF181662B1E5AC4BB2 /* Pods-zenly.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 27FZ5HNHJV;
 				INFOPLIST_FILE = zenly/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.ucdavis.mapDiary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -419,8 +426,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TR9332WN2Q;
+				DEVELOPMENT_TEAM = 27FZ5HNHJV;
 				INFOPLIST_FILE = zenly/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
