@@ -29,15 +29,27 @@ class EventsViewController: UIViewController , UITableViewDelegate, UITableViewD
         diaryTable.delegate = self
         diaryTable.dataSource = self
         print("view did load: \(eventCount)")
-
-    //Notification for removing deleted cell
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteList), name: NSNotification.Name(rawValue: "delete"), object: nil)
-       }
+           
+        //Notification for removing deleted cell
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData), name: NSNotification.Name(rawValue: "update"), object: nil)
+        }
     @objc func deleteList(notification: NSNotification){
-        self.removeCell(indexPath: selectedIndex)
+           self.removeCell(indexPath: selectedIndex)
+           
+       }
+    
+    @objc func onDidReceiveData(_ notification:NSNotification) {
+        if let text = notification.userInfo?["text"] as? String {
+            self.titleVec[selectedIndex.row] = text
+        }
+        if let url = notification.userInfo?["url"] as? String {
+            self.urlVec[selectedIndex.row] = url
+        }
         
+        diaryTable.reloadData()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"),object: nil)
     }
- 
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.eventCount
     }

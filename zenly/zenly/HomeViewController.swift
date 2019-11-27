@@ -40,7 +40,11 @@ UINavigationControllerDelegate  {
         mapView.delegate = self
         load_markers()
         self.imageTook = UIImage()
-        
+        eventNum = 0
+        title_Vec = [String]()
+        url_Vec = [String]()
+        time_Vec = [String]()
+        path_Vec = [String]()
         
         //reload markers on map
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
@@ -59,17 +63,18 @@ UINavigationControllerDelegate  {
     
     func load_markers(){
         curMarkerExist = false
+        self.title_Vec.removeAll()
+        self.url_Vec.removeAll()
+        self.time_Vec.removeAll()
+        self.path_Vec.removeAll()
+        self.eventNum = 0
         let eventRef = docRef.collection("Event")
         eventRef.getDocuments{ (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
                 
             } else {
-                self.title_Vec.removeAll()
-                self.url_Vec.removeAll()
-                self.time_Vec.removeAll()
-                self.path_Vec.removeAll()
-                self.eventNum = 0
+                
                 //use forced unwarp here because it's written in offical doc of firestore
                 
                 for document in querySnapshot!.documents {
@@ -115,6 +120,7 @@ UINavigationControllerDelegate  {
                     marker.map = self.mapView
                 }
                 self.eventNum = querySnapshot?.count ?? 0
+                print("upon reload marker, eventCount = \(self.eventNum), title = \(self.title_Vec)")
                 
             }
         }
@@ -302,6 +308,8 @@ UINavigationControllerDelegate  {
             dest.timeVec = self.time_Vec
             dest.urlVec = self.url_Vec
             dest.pathVec = self.path_Vec
+            print("segue: titlevec = \(title_Vec)")
+            print("segue: eventCount = \(eventNum)")
             
                   
         }

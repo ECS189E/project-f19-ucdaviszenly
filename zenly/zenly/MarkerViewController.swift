@@ -102,6 +102,10 @@ class MarkerViewController: UIViewController {
 
     @IBAction func DonePressed(_ sender: Any) {
         self.delegate?.reload_data()
+
+        let text = title_field.text ?? ""
+        let url = imageURL
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update"),object: nil,userInfo:["title": text, "url":url] )
         self.dismiss(animated: true, completion: nil)
     }
     

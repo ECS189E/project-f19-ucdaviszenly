@@ -30,10 +30,10 @@
             filePath = "zenly/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
-            landmarkName = "pickerView(_:viewForRow:forComponent:reusing:)"
-            landmarkType = "7">
+            startingLineNumber = "253"
+            endingLineNumber = "253"
+            landmarkName = "HomeViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -46,8 +46,8 @@
             filePath = "zenly/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
             landmarkName = "pickerView(_:viewForRow:forComponent:reusing:)"
             landmarkType = "7">
          </BreakpointContent>
