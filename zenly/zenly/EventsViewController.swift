@@ -21,20 +21,16 @@ class EventsViewController: UIViewController , UITableViewDelegate, UITableViewD
     var iconVec = [String]()
     var timeVec = [String]()
     var pathVec = [String]()
-    var selectPathIndex = IndexPath()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"),object: nil)
         print("title vector is \(titleVec)")
         docRef = Firestore.firestore().document("User/\(phoneNum)")
         diaryTable.delegate = self
         diaryTable.dataSource = self
-        //reload table
-        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
-    }
-    @objc func loadList(notification: NSNotification){
-        self.diaryTable.reloadData()
+        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,7 +64,6 @@ class EventsViewController: UIViewController , UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
         print(indexPath.section)
-        self.selectPathIndex = indexPath
         let markerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "MarkerViewController") as! MarkerViewController
 
        markerVC.targetPath = pathVec[indexPath.row]
@@ -77,16 +72,16 @@ class EventsViewController: UIViewController , UITableViewDelegate, UITableViewD
        self.navigationController?.present(markerVC, animated: true)
     }
    
+    @IBAction func deletePressed(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"),object: nil)
+        var titleVec = [String]()
+        var iconVec = [String]()
+        var timeVec = [String]()
+        var pathVec = [String]()
+        diaryTable.reloadData()
+    }
     
-//
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//      if editingStyle == .delete {
-//        print("Deleted")
-//
-////        self.cellList.remove(at: indexPath.row)
-//        self.diaryTable.deleteRows(at: [indexPath], with: .automatic)
-//      }
-//    }
+
     
     
 }

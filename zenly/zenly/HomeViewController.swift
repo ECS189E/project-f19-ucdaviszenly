@@ -41,8 +41,16 @@ UINavigationControllerDelegate  {
         load_markers()
         self.imageTook = UIImage()
         
-        
+        //reload table
+           NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+       }
+    @objc func loadList(notification: NSNotification){
+//           self.diaryTable.reloadData()
+        print("clear")
+        self.mapView.clear()
+        self.load_markers()
     }
+    
 
     
     func selectUser(){
