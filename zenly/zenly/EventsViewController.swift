@@ -15,24 +15,29 @@ class EventsViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     var phoneNum = ""
     var eventCount = 0
-    var docRef: DocumentReference!
-
+    var docRef_1: DocumentReference!
+    var selectedIndex = IndexPath()
     var titleVec = [String]()
-    var iconVec = [String]()
+    var urlVec = [String]()
     var timeVec = [String]()
     var pathVec = [String]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"),object: nil)
         print("title vector is \(titleVec)")
-        docRef = Firestore.firestore().document("User/\(phoneNum)")
+//        docRef = Firestore.firestore().document("User/\(phoneNum)")
         diaryTable.delegate = self
         diaryTable.dataSource = self
+        print("view did load: \(eventCount)")
+
+    //Notification for removing deleted cell
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteList), name: NSNotification.Name(rawValue: "delete"), object: nil)
+       }
+    @objc func deleteList(notification: NSNotification){
+        self.removeCell(indexPath: selectedIndex)
         
     }
-
+ 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.eventCount
     }
@@ -41,9 +46,9 @@ class EventsViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! DiaryTableViewCell
-        cell.cell_docRef = Firestore.firestore().document(pathVec[indexPath.row])
+        
         cell.cell_title.text = titleVec[indexPath.row]
-        let urlkey = iconVec[indexPath.row]
+        let urlkey = urlVec[indexPath.row]
         if let url = URL(string: urlkey){
            do{
                let data = try Data(contentsOf: url)
@@ -62,23 +67,53 @@ class EventsViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     /* Method that tells the delegate that the specified row is now selected. */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-        print(indexPath.section)
         let markerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "MarkerViewController") as! MarkerViewController
-
-       markerVC.targetPath = pathVec[indexPath.row]
-        //markerVC.dismissFlag = true
-       print("pathVec is \(pathVec[indexPath.row])")
-       self.navigationController?.present(markerVC, animated: true)
+        markerVC.targetPath = pathVec[indexPath.row]
+        self.selectedIndex = indexPath
+        self.navigationController?.present(markerVC, animated: true)
     }
-   
-    @IBAction func deletePressed(_ sender: Any) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"),object: nil)
-        var titleVec = [String]()
-        var iconVec = [String]()
-        var timeVec = [String]()
-        var pathVec = [String]()
-        diaryTable.reloadData()
+    func removeCell(indexPath: IndexPath){
+        self.titleVec.remove(at: indexPath.row)
+        self.urlVec.remove(at: indexPath.row)
+        self.timeVec.remove(at: indexPath.row)
+        self.pathVec.remove(at: indexPath.row)
+        self.eventCount  = self.eventCount - 1
+        self.diaryTable.deleteRows(at: [indexPath], with: .automatic)
+    }
+    //delete cell function
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+      if editingStyle == .delete {
+        //delete data in server
+        let docRef_1 = Firestore.firestore().document(pathVec[indexPath.row])
+        docRef_1.getDocument(completion: {(docNapShot, error) in
+            guard let docNapShot = docNapShot, docNapShot.exists else {
+                print("error in docnapshot, nothing to be deleted")
+                
+                return
+            }
+            let myData = docNapShot.data()
+            let urlkey = myData?["URL"] as? String ?? ""
+            if urlkey != "" {
+                let storagePath = urlkey
+                let imageRef = Storage.storage().reference(forURL: storagePath)
+                imageRef.delete(completion: { error in
+                    if error != nil{
+                        print("no image to delete in server")
+                    }
+                    print("image deleted in server")
+                })
+                
+            }
+            docRef_1.delete()
+            print("data deleted from server")
+            self.removeCell(indexPath: indexPath)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"),object: nil)
+        })
+        
+        
+
+
+      }
     }
     
 

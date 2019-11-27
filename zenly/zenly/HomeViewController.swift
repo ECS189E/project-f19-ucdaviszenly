@@ -27,7 +27,7 @@ UINavigationControllerDelegate  {
     var curMarkerExist = false
     var eventNum = 0
     var title_Vec = [String]()
-    var icon_Vec = [String]()
+    var url_Vec = [String]()
     var time_Vec = [String]()
     var path_Vec = [String]()
     
@@ -41,12 +41,12 @@ UINavigationControllerDelegate  {
         load_markers()
         self.imageTook = UIImage()
         
-        //reload table
-           NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+        //reload markers on map
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
        }
     @objc func loadList(notification: NSNotification){
-//           self.diaryTable.reloadData()
-        print("clear")
+        print("clear and reload markers on map")
         self.mapView.clear()
         self.load_markers()
     }
@@ -65,7 +65,13 @@ UINavigationControllerDelegate  {
                 print("Error getting documents: \(error)")
                 
             } else {
+                self.title_Vec.removeAll()
+                self.url_Vec.removeAll()
+                self.time_Vec.removeAll()
+                self.path_Vec.removeAll()
+                self.eventNum = 0
                 //use forced unwarp here because it's written in offical doc of firestore
+                
                 for document in querySnapshot!.documents {
                     var la = 0.0
                     var lo = 0.0
@@ -94,13 +100,12 @@ UINavigationControllerDelegate  {
                         
                     }
                     
-                    let n = document.data()["URL"] as? String ?? "https://firebasestorage.googleapis.com/v0/b/ecs189e-project.appspot.com/o/image%2Fdefault.jpg?alt=media&token=de615864-aa76-4e4e-b078-e963254fdf4b"
-                    self.icon_Vec.append(n)
+                    let url = document.data()["URL"] as? String ?? "https://firebasestorage.googleapis.com/v0/b/ecs189e-project.appspot.com/o/image%2Fdefault.jpg?alt=media&token=de615864-aa76-4e4e-b078-e963254fdf4b"
+                    self.url_Vec.append(url)
                     
                     
                     let path = "la\(la)lo\(lo)"
                     self.path_Vec.append("User/\(self.phoneNumInE64)/Event/\(path)")
-                    print("path in home is \(String(describing: self.path_Vec.last))")
                     
                     let position = CLLocationCoordinate2D(latitude: la, longitude: lo)
                    
@@ -295,7 +300,7 @@ UINavigationControllerDelegate  {
             dest.eventCount = self.eventNum
             dest.titleVec = self.title_Vec
             dest.timeVec = self.time_Vec
-            dest.iconVec = self.icon_Vec
+            dest.urlVec = self.url_Vec
             dest.pathVec = self.path_Vec
             
                   

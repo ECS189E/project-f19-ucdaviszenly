@@ -37,7 +37,6 @@ class MarkerViewController: UIViewController {
     var delegate: markerdelegate?
     var imageTook = UIImage()
     var targetPath = ""
-    //var dismissFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +85,6 @@ class MarkerViewController: UIViewController {
         let latitude = "\(position.latitude)"
         let longitude = "\(position.longitude)"
         let dataToSave: [String: Any] = ["content": content, "title": title, "latitude": latitude, "longitude": longitude, "date": dateStr, "icon":icon ]
-        print(icon)
         docRef.setData(dataToSave)
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true
@@ -135,6 +133,8 @@ class MarkerViewController: UIViewController {
             }
             self.docRef.delete()
             self.delegate?.reload_data()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "delete"),object: nil)
+            self.dismiss(animated: true, completion: nil)
         })
         
     }
@@ -174,7 +174,6 @@ class MarkerViewController: UIViewController {
     }
     
     func uploadPhoto(imagename: String){
-//        let image_name = UUID().uuidString
         let imageRef = Storage.storage().reference(withPath: "image/\(imagename).jpg")
         guard let image = imageView.image, let data = image.jpegData(compressionQuality: 0.5) else{
             print("error in upload photo")
