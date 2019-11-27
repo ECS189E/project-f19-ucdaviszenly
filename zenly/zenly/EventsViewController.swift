@@ -31,6 +31,8 @@ class EventsViewController: UIViewController , UITableViewDelegate, UITableViewD
         print("view did load: \(eventCount)")
            
         //Notification for removing deleted cell
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteList), name: NSNotification.Name(rawValue: "delete"), object: nil)
+               
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData), name: NSNotification.Name(rawValue: "update"), object: nil)
         }
     @objc func deleteList(notification: NSNotification){
