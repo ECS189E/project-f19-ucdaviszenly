@@ -21,15 +21,13 @@ class EventsViewController: UIViewController , UITableViewDelegate, UITableViewD
     var urlVec = [String]()
     var timeVec = [String]()
     var pathVec = [String]()
+    var iconVec = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("title vector is \(titleVec)")
-//        docRef = Firestore.firestore().document("User/\(phoneNum)")
         diaryTable.delegate = self
         diaryTable.dataSource = self
-        print("view did load: \(eventCount)")
-           
+        
         //Notification for removing deleted cell
         NotificationCenter.default.addObserver(self, selector: #selector(deleteList), name: NSNotification.Name(rawValue: "delete"), object: nil)
                
@@ -37,6 +35,7 @@ class EventsViewController: UIViewController , UITableViewDelegate, UITableViewD
         }
     @objc func deleteList(notification: NSNotification){
            self.removeCell(indexPath: selectedIndex)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"),object: nil)
            
        }
     
@@ -62,6 +61,7 @@ class EventsViewController: UIViewController , UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! DiaryTableViewCell
         
         cell.cell_title.text = titleVec[indexPath.row]
+        cell.cell_icon.image = UIImage(named: iconVec[indexPath.row])
         let urlkey = urlVec[indexPath.row]
         if let url = URL(string: urlkey){
            do{
@@ -83,6 +83,7 @@ class EventsViewController: UIViewController , UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let markerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "MarkerViewController") as! MarkerViewController
         markerVC.targetPath = pathVec[indexPath.row]
+        markerVC.icon = iconVec[indexPath.row]
         self.selectedIndex = indexPath
         self.navigationController?.present(markerVC, animated: true)
     }
@@ -91,6 +92,7 @@ class EventsViewController: UIViewController , UITableViewDelegate, UITableViewD
         self.urlVec.remove(at: indexPath.row)
         self.timeVec.remove(at: indexPath.row)
         self.pathVec.remove(at: indexPath.row)
+        self.iconVec.remove(at: indexPath.row)
         self.eventCount  = self.eventCount - 1
         self.diaryTable.deleteRows(at: [indexPath], with: .automatic)
     }
@@ -123,14 +125,8 @@ class EventsViewController: UIViewController , UITableViewDelegate, UITableViewD
             self.removeCell(indexPath: indexPath)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"),object: nil)
         })
-        
-        
-
-
       }
     }
-    
-
-    
+       
     
 }

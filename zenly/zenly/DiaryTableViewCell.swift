@@ -26,5 +26,5 @@ class DiaryTableViewCell: UITableViewCell {
     @IBOutlet weak var cell_image: UIImageView!
     @IBOutlet weak var cell_title: UILabel!
     @IBOutlet weak var cell_time: UILabel!
-    
+    @IBOutlet weak var cell_icon: UIImageView!
 }

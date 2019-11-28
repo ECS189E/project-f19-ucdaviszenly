@@ -20,7 +20,7 @@ UINavigationControllerDelegate  {
     var phoneNumInE64: String = ""
     let locationManager = CLLocationManager()
     var selectedMarker = GMSMarker()
-    var choices = ["pin","book","game","store","airplane","rice"]
+    var choices = ["pin","car","user","shop","star","food"]
     var selectedIconName = "pin"
     var docRef: DocumentReference!
     var imageTook = UIImage()
@@ -30,21 +30,19 @@ UINavigationControllerDelegate  {
     var url_Vec = [String]()
     var time_Vec = [String]()
     var path_Vec = [String]()
+    var icon_Vec = [String]()
+    var dateStr = ""
+    let defaultImageUrl = "https://firebasestorage.googleapis.com/v0/b/ecs189e-project.appspot.com/o/image%2Fdefault.jpg?alt=media&token=de615864-aa76-4e4e-b078-e963254fdf4b"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         phoneNumInE64 = Storagelocal.phoneNumberInE164 ?? "Error"
-        selectUser()
+        docRef = Firestore.firestore().document("User/\(phoneNumInE64)")
         locationManager.delegate = self as CLLocationManagerDelegate
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
         load_markers()
         self.imageTook = UIImage()
-        eventNum = 0
-        title_Vec = [String]()
-        url_Vec = [String]()
-        time_Vec = [String]()
-        path_Vec = [String]()
         
         //reload markers on map
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
@@ -55,18 +53,13 @@ UINavigationControllerDelegate  {
         self.load_markers()
     }
     
-
-    
-    func selectUser(){
-        docRef = Firestore.firestore().document("User/\(phoneNumInE64)")
-    }
-    
     func load_markers(){
         curMarkerExist = false
         self.title_Vec.removeAll()
         self.url_Vec.removeAll()
         self.time_Vec.removeAll()
         self.path_Vec.removeAll()
+        self.icon_Vec.removeAll()
         self.eventNum = 0
         let eventRef = docRef.collection("Event")
         eventRef.getDocuments{ (querySnapshot, error) in
@@ -84,6 +77,7 @@ UINavigationControllerDelegate  {
                     for dic in document.data(){
                         if(dic.key == "latitude"){
                             let la_string = "\(dic.value)"
+                            
                             la = Double(la_string) ?? 0
                         }
                         if(dic.key == "longitude"){
@@ -92,6 +86,7 @@ UINavigationControllerDelegate  {
                         }
                         if(dic.key == "icon"){
                             icon = "\(dic.value)"
+                            self.icon_Vec.append(icon)
                 
                         }
                         if(dic.key == "title"){
@@ -105,12 +100,12 @@ UINavigationControllerDelegate  {
                         
                     }
                     
-                    let url = document.data()["URL"] as? String ?? "https://firebasestorage.googleapis.com/v0/b/ecs189e-project.appspot.com/o/image%2Fdefault.jpg?alt=media&token=de615864-aa76-4e4e-b078-e963254fdf4b"
+                    let url = document.data()["URL"] as? String ?? self.defaultImageUrl
                     self.url_Vec.append(url)
                     
                     
                     let path = "la\(la)lo\(lo)"
-                    self.path_Vec.append("User/\(self.phoneNumInE64)/Event/\(path)")
+                self.path_Vec.append("User/\(self.phoneNumInE64)/Event/\(path)")
                     
                     let position = CLLocationCoordinate2D(latitude: la, longitude: lo)
                    
@@ -120,7 +115,6 @@ UINavigationControllerDelegate  {
                     marker.map = self.mapView
                 }
                 self.eventNum = querySnapshot?.count ?? 0
-                print("upon reload marker, eventCount = \(self.eventNum), title = \(self.title_Vec)")
                 
             }
         }
@@ -202,6 +196,8 @@ UINavigationControllerDelegate  {
         let day = calendar.component(.day, from: date)
         let month = calendar.component(.month, from: date)
         let year = calendar.component(.year, from: date)
+        //November 27, 2019
+        dateStr = "\(month) \(day), \(year)"
         return "\(year)-\(month)-\(day) \(hour):\(min)"
     }
     //long press at a place to show a popup view to add a marker
@@ -224,7 +220,7 @@ UINavigationControllerDelegate  {
             let textField = alert.textFields?.first
             let marker = GMSMarker(position: coordinate)
             
-            marker.title = textField?.text!
+            marker.title = textField?.text
             if( marker.title == ""){
                 marker.title = self.getTime()
             }
@@ -232,7 +228,24 @@ UINavigationControllerDelegate  {
             
             marker.iconView = UIImageView(image: UIImage(named: self.selectedIconName))
             self.selectedMarker = marker
-            //self.performSegue(withIdentifier: "showMarker", sender: self)
+            
+            // save marker to server
+            let la = coordinate.latitude
+            let lo = coordinate.longitude
+            let combinePosition = "la\(la)lo\(lo)"
+            let path = "User/\(self.phoneNumInE64)/Event/\(combinePosition)"
+            let docRef = Firestore.firestore().document(path)
+            let dataToSave: [String: Any] = ["title": marker.title ?? "", "latitude": "\(la)", "longitude": "\(lo)", "date": self.dateStr, "icon":self.selectedIconName ]
+            docRef.setData(dataToSave)
+            print("marker saved on server")
+            
+            //update data that passes to events list
+            self.title_Vec.append(marker.title ?? "")
+            self.url_Vec.append(self.defaultImageUrl)
+            self.time_Vec.append(self.dateStr)
+            self.path_Vec.append(path)
+            self.icon_Vec.append(self.selectedIconName)
+            self.eventNum = self.eventNum + 1
             
         }))
         self.present(alert, animated: true, completion: nil)
@@ -253,22 +266,23 @@ UINavigationControllerDelegate  {
 
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let myView = UIView(frame: CGRect(x: 0, y: 0, width:pickerView.bounds.width , height: 30))
-        let myImageView = UIImageView(frame: CGRect(x: 100, y: 0, width: 30, height: 30))
+        let myImageView = UIImageView(frame: CGRect(x: 115, y: 0, width: 35, height: 35))
         
         switch row {
         //image: 32x32 px
+        // "pin","car","user","shop","star","food"
         case 0:
             myImageView.image =  #imageLiteral(resourceName: "pin")
         case 1:
-            myImageView.image =  #imageLiteral(resourceName: "book")
+            myImageView.image =  #imageLiteral(resourceName: "car")
         case 2:
-            myImageView.image =  #imageLiteral(resourceName: "game")
+            myImageView.image =  #imageLiteral(resourceName: "user")
         case 3:
-            myImageView.image =  #imageLiteral(resourceName: "store")
+            myImageView.image =  #imageLiteral(resourceName: "shop")
         case 4:
-            myImageView.image =  #imageLiteral(resourceName: "airplane")
+            myImageView.image =  #imageLiteral(resourceName: "star")
         case 5:
-            myImageView.image =  #imageLiteral(resourceName: "rice")
+            myImageView.image =  #imageLiteral(resourceName: "food")
         default:
             myImageView.image = #imageLiteral(resourceName: "pin")
         }
@@ -308,15 +322,14 @@ UINavigationControllerDelegate  {
             dest.timeVec = self.time_Vec
             dest.urlVec = self.url_Vec
             dest.pathVec = self.path_Vec
-            print("segue: titlevec = \(title_Vec)")
-            print("segue: eventCount = \(eventNum)")
-            
+            dest.iconVec = self.icon_Vec
                   
         }
         
     }
     @IBAction func EventListPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "list",sender: self)
+        
     }
     
     @IBAction func logOutPressed(_ sender: Any) {

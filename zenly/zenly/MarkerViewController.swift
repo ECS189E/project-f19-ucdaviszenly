@@ -37,26 +37,29 @@ class MarkerViewController: UIViewController {
     var delegate: markerdelegate?
     var imageTook = UIImage()
     var targetPath = ""
+    var latitude = ""
+    var longitude = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         activityIndicator.isHidden = true
-        
-        print(imageTook.size)
+        latitude = "\(marker.position.latitude)"
+        longitude = "\(marker.position.longitude)"
     }
     
     func setup(){
+        date = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.long
+        dateStr = dateFormatter.string(from: date as Date)
+        
         if (targetPath != ""){
             docRef = Firestore.firestore().document(targetPath)
             fetchData()
         }else{
             title_field.text = marker.title
-            date = NSDate()
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = DateFormatter.Style.long
-            dateStr = dateFormatter.string(from: date as Date)
-            
             if imageTook.size != CGSize(width: 0.0, height: 0.0) {
                 imageView.image = imageTook
                 deletePhotoBtn.isHidden = false
@@ -81,9 +84,7 @@ class MarkerViewController: UIViewController {
 
         let content = textView.text ?? ""
         let title = title_field.text ?? ""
-        let position = marker.position
-        let latitude = "\(position.latitude)"
-        let longitude = "\(position.longitude)"
+        print("save: la= \(latitude) lo = \(longitude)")
         let dataToSave: [String: Any] = ["content": content, "title": title, "latitude": latitude, "longitude": longitude, "date": dateStr, "icon":icon ]
         docRef.setData(dataToSave)
         activityIndicator.stopAnimating()
@@ -219,6 +220,8 @@ class MarkerViewController: UIViewController {
             let content = myData?["content"] as? String ?? ""
             let title = myData?["title"] as? String ?? ""
             let urlkey = myData?["URL"] as? String ?? ""
+            self.latitude = myData?["latitude"] as? String ?? ""
+            self.longitude = myData?["longitude"] as? String ?? ""
             self.title_field.text = title
             self.textView.text = content
             print("Fetch data success")

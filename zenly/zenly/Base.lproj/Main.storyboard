@@ -297,7 +297,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Diary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEV-wm-Vaz">
-                                <rect key="frame" x="16" y="52.000000000000007" width="382" height="111.66666666666669"/>
+                                <rect key="frame" x="16" y="96" width="382" height="111.66666666666669"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="111.67" id="Hu5-2h-yWj"/>
                                 </constraints>
@@ -306,7 +306,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="diaryTable" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4wu-2a-tMG">
-                                <rect key="frame" x="20" y="172" width="374" height="618"/>
+                                <rect key="frame" x="20" y="216" width="374" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="74" id="1e7-A2-S73" customClass="DiaryTableViewCell" customModule="zenly" customModuleProvider="target">
@@ -317,17 +317,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e96-wv-e5q">
-                                                    <rect key="frame" x="81" y="11" width="146" height="56"/>
+                                                    <rect key="frame" x="81.000000000000014" y="11" width="173.33333333333337" height="56"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="146" id="ReO-XT-bUe"/>
                                                         <constraint firstAttribute="height" constant="56" id="pM7-aa-cn2"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9f-zA-Elv">
-                                                    <rect key="frame" x="296.66666666666669" y="13" width="38.333333333333314" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="November 20, 2019" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9f-zA-Elv">
+                                                    <rect key="frame" x="214.33333333333337" y="13" width="139.66666666666663" height="17"/>
                                                     <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -339,17 +338,28 @@
                                                         <constraint firstAttribute="height" constant="56" id="hU0-o8-CMO"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0f7-QK-YMn">
+                                                    <rect key="frame" x="262" y="31" width="36" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="36" id="kOk-hU-sPL"/>
+                                                        <constraint firstAttribute="height" constant="36" id="yX3-Ne-Lyw"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="e96-wv-e5q" firstAttribute="top" secondItem="oUg-lz-vfy" secondAttribute="topMargin" id="8Fg-7b-Pc2"/>
                                                 <constraint firstItem="e96-wv-e5q" firstAttribute="leading" secondItem="eXs-k0-tPu" secondAttribute="trailing" constant="14" id="E3u-iT-jR8"/>
                                                 <constraint firstItem="eXs-k0-tPu" firstAttribute="leading" secondItem="oUg-lz-vfy" secondAttribute="leading" constant="9" id="Gn5-li-5Tu"/>
                                                 <constraint firstItem="e96-wv-e5q" firstAttribute="firstBaseline" secondItem="e9f-zA-Elv" secondAttribute="firstBaseline" id="K2G-ds-lcw"/>
+                                                <constraint firstItem="0f7-QK-YMn" firstAttribute="top" secondItem="e9f-zA-Elv" secondAttribute="bottom" constant="1" id="Kdm-ba-0KO"/>
+                                                <constraint firstItem="0f7-QK-YMn" firstAttribute="centerX" secondItem="e9f-zA-Elv" secondAttribute="centerX" constant="-4.6666666666666856" id="TzM-4Q-qZz"/>
                                                 <constraint firstItem="eXs-k0-tPu" firstAttribute="top" secondItem="oUg-lz-vfy" secondAttribute="top" constant="11" id="jcr-ns-eh3"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="e9f-zA-Elv" secondAttribute="trailing" constant="19" id="msN-wm-YWl"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="e9f-zA-Elv" secondAttribute="trailing" id="msN-wm-YWl"/>
+                                                <constraint firstItem="0f7-QK-YMn" firstAttribute="leading" secondItem="e96-wv-e5q" secondAttribute="trailing" constant="7.3333333333333712" id="yzn-hM-jt5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cell_icon" destination="0f7-QK-YMn" id="vKc-f4-S8J"/>
                                             <outlet property="cell_image" destination="eXs-k0-tPu" id="d0t-33-KVB"/>
                                             <outlet property="cell_time" destination="e9f-zA-Elv" id="MaU-mI-8QW"/>
                                             <outlet property="cell_title" destination="e96-wv-e5q" id="nAO-QT-HpB"/>
