@@ -10,7 +10,9 @@ import UIKit
 import GoogleMaps
 import Firebase
 import Dispatch
-
+import CoreML
+import Vision
+import ImageIO
 //declare delegate
 protocol markerdelegate{
     func reload_data()
@@ -62,6 +64,7 @@ class MarkerViewController: UIViewController {
             title_field.text = marker.title
             if imageTook.size != CGSize(width: 0.0, height: 0.0) {
                 imageView.image = imageTook
+                objectDetection(image: imageTook)
                 deletePhotoBtn.isHidden = false
             }else{
                 deletePhotoBtn.isHidden = true
@@ -98,7 +101,7 @@ class MarkerViewController: UIViewController {
             deleteMarkerBtn.isUserInteractionEnabled = true
         }
         print("content: \(content) title: \(title)")
-//        self.delegate?.reload_data()
+
     }
 
     @IBAction func DonePressed(_ sender: Any) {
@@ -237,6 +240,65 @@ class MarkerViewController: UIViewController {
             }
         })
     }
+    
+
+    
+    func processClassifications(for request: VNRequest, error: Error?) {
+        
+        DispatchQueue.main.async {
+            guard let results = request.results else { return }
+            
+            let classifications = results as! [VNClassificationObservation]
+        
+            if classifications.isEmpty {
+                print("Nothing recognized.")
+            } else {
+                
+                let numOfTags = 5
+                let topClassifications = classifications.prefix(numOfTags)
+                let descriptions = topClassifications.map { classification -> String in
+                    let delimiter = ","
+                    
+                    let tags = classification.identifier.components(separatedBy: delimiter)
+                    let tag = tags[0].replacingOccurrences(of: " ", with: "_")
+                    return String(format: "#%@ ",tag)
+                   
+                }
+                print("Classification:\n")
+                var tags:String = ""
+                for i in descriptions{
+                    tags = tags + i
+                }
+                self.textView.text = self.textView.text + tags
+            }
+        }
+    }
+    
+    func objectDetection(image: UIImage){
+        
+        let orientation = CGImagePropertyOrientation(image.imageOrientation)
+        guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            
+            let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
+        do {
+            /* https://developer.apple.com/machine-learning/models/ */
+            let model = try VNCoreMLModel(for: Resnet50().model)
+            
+            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
+                self?.processClassifications(for: request, error: error)
+            })
+            request.imageCropAndScaleOption = .centerCrop
+            try handler.perform([request])
+        } catch {
+            print("Failed to perform detection.\n\(error.localizedDescription)")
+        }
+
+        }
+        
+    }
+
 }
 
 extension MarkerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{

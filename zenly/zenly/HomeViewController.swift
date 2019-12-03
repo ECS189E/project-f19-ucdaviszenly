@@ -33,6 +33,7 @@ UINavigationControllerDelegate  {
     var icon_Vec = [String]()
     var dateStr = ""
     let defaultImageUrl = "https://firebasestorage.googleapis.com/v0/b/ecs189e-project.appspot.com/o/image%2Fdefault.jpg?alt=media&token=de615864-aa76-4e4e-b078-e963254fdf4b"
+    var camera:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -185,7 +186,7 @@ UINavigationControllerDelegate  {
         }
         print("image size = \(image.size)")
         imageTook = image
-        
+        self.camera = true
         self.performSegue(withIdentifier: "showMarker", sender: self)
     }
     func getTime()-> String{
@@ -309,8 +310,10 @@ UINavigationControllerDelegate  {
             dest.icon = self.selectedIconName
             dest.delegate = self
             mapView.clear()
-            if imageTook.size != CGSize(width: 0.0, height: 0.0) {
+
+            if self.camera == true {
                 dest.imageTook = self.imageTook
+                self.camera = false
             }
         }
         

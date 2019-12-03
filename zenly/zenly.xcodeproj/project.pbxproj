@@ -22,6 +22,10 @@
 		2CA9D6E1234C0866002ED627 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CA9D6DF234C0866002ED627 /* Main.storyboard */; };
 		2CA9D6E3234C0867002ED627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CA9D6E2234C0867002ED627 /* Assets.xcassets */; };
 		2CA9D6E6234C0867002ED627 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CA9D6E4234C0867002ED627 /* LaunchScreen.storyboard */; };
+		8F64888C2393B4CC0089DB95 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F64888B2393B4CC0089DB95 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
+		8F6488922393C1C90089DB95 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8F6488912393C1C90089DB95 /* MobileNetV2.mlmodel */; };
+		8F6488942393CFEA0089DB95 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8F6488932393CFEA0089DB95 /* Resnet50.mlmodel */; };
+		8F6488962393D15A0089DB95 /* YOLOv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8F6488952393D15A0089DB95 /* YOLOv3.mlmodel */; };
 		F0E11CCD50A05A9C40E00E62 /* libPods-zenly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ABB19DE1A9C11E10C8CA702 /* libPods-zenly.a */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +50,10 @@
 		2CA9D6E7234C0867002ED627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DB95D10FFFFD3A53DD5B912 /* Pods-zenly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zenly.release.xcconfig"; path = "Target Support Files/Pods-zenly/Pods-zenly.release.xcconfig"; sourceTree = "<group>"; };
 		8ABB19DE1A9C11E10C8CA702 /* libPods-zenly.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zenly.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F64888B2393B4CC0089DB95 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
+		8F6488912393C1C90089DB95 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
+		8F6488932393CFEA0089DB95 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
+		8F6488952393D15A0089DB95 /* YOLOv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3.mlmodel; sourceTree = "<group>"; };
 		E93B3E777873FD2B1991A239 /* Pods-wallet-1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wallet-1.release.xcconfig"; path = "Target Support Files/Pods-wallet-1/Pods-wallet-1.release.xcconfig"; sourceTree = "<group>"; };
 		F3AE23CF181662B1E5AC4BB2 /* Pods-zenly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zenly.debug.xcconfig"; path = "Target Support Files/Pods-zenly/Pods-zenly.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +107,7 @@
 				2CA9D6DB234C0866002ED627 /* SceneDelegate.swift */,
 				2CA9D6DD234C0866002ED627 /* LoginViewController.swift */,
 				2C80822C2356CF97009FCB96 /* VerifyViewController.swift */,
+				8F64888B2393B4CC0089DB95 /* CGImagePropertyOrientation+UIImageOrientation.swift */,
 				2C45239A23640AAD000F284C /* HomeViewController.swift */,
 				2C497F33238122B500520A12 /* MarkerViewController.swift */,
 				2C497F352386501700520A12 /* EventsViewController.swift */,
@@ -106,6 +115,9 @@
 				2CA9D6DF234C0866002ED627 /* Main.storyboard */,
 				2CA9D6E2234C0867002ED627 /* Assets.xcassets */,
 				2CA9D6E4234C0867002ED627 /* LaunchScreen.storyboard */,
+				8F6488912393C1C90089DB95 /* MobileNetV2.mlmodel */,
+				8F6488932393CFEA0089DB95 /* Resnet50.mlmodel */,
+				8F6488952393D15A0089DB95 /* YOLOv3.mlmodel */,
 				2CA9D6E7234C0867002ED627 /* Info.plist */,
 				21319335238672CD00733BC7 /* GoogleService-Info.plist */,
 			);
@@ -247,6 +259,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F6488962393D15A0089DB95 /* YOLOv3.mlmodel in Sources */,
+				8F6488942393CFEA0089DB95 /* Resnet50.mlmodel in Sources */,
 				210E9316238B656E00EBA179 /* DiaryTableViewCell.swift in Sources */,
 				2C497F34238122B500520A12 /* MarkerViewController.swift in Sources */,
 				2C4523952363DC5B000F284C /* Api.swift in Sources */,
@@ -257,6 +271,8 @@
 				2C80822D2356CF97009FCB96 /* VerifyViewController.swift in Sources */,
 				2C45239B23640AAD000F284C /* HomeViewController.swift in Sources */,
 				2CA9D6DA234C0866002ED627 /* AppDelegate.swift in Sources */,
+				8F64888C2393B4CC0089DB95 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
+				8F6488922393C1C90089DB95 /* MobileNetV2.mlmodel in Sources */,
 				2CA9D6DC234C0866002ED627 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
