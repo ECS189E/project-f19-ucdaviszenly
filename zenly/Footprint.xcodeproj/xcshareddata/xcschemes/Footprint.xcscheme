@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1120"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2CA9D6D5234C0866002ED627"
-               BuildableName = "zenly.app"
-               BlueprintName = "zenly"
-               ReferencedContainer = "container:zenly.xcodeproj">
+               BuildableName = "Footprint.app"
+               BlueprintName = "Footprint"
+               ReferencedContainer = "container:Footprint.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2CA9D6D5234C0866002ED627"
-            BuildableName = "zenly.app"
-            BlueprintName = "zenly"
-            ReferencedContainer = "container:zenly.xcodeproj">
+            BuildableName = "Footprint.app"
+            BlueprintName = "Footprint"
+            ReferencedContainer = "container:Footprint.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2CA9D6D5234C0866002ED627"
-            BuildableName = "zenly.app"
-            BlueprintName = "zenly"
-            ReferencedContainer = "container:zenly.xcodeproj">
+            BuildableName = "Footprint.app"
+            BlueprintName = "Footprint"
+            ReferencedContainer = "container:Footprint.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

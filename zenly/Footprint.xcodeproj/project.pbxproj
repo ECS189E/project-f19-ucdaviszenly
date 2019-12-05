@@ -38,7 +38,7 @@
 		2C497F33238122B500520A12 /* MarkerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerViewController.swift; sourceTree = "<group>"; };
 		2C497F352386501700520A12 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		2C80822C2356CF97009FCB96 /* VerifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
-		2CA9D6D6234C0866002ED627 /* zenly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zenly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CA9D6D6234C0866002ED627 /* Footprint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Footprint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CA9D6D9234C0866002ED627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CA9D6DB234C0866002ED627 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2CA9D6DD234C0866002ED627 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 		2CA9D6D7234C0866002ED627 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2CA9D6D6234C0866002ED627 /* zenly.app */,
+				2CA9D6D6234C0866002ED627 /* Footprint.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,9 +140,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2CA9D6D5234C0866002ED627 /* zenly */ = {
+		2CA9D6D5234C0866002ED627 /* Footprint */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2CA9D6EA234C0867002ED627 /* Build configuration list for PBXNativeTarget "zenly" */;
+			buildConfigurationList = 2CA9D6EA234C0867002ED627 /* Build configuration list for PBXNativeTarget "Footprint" */;
 			buildPhases = (
 				28E9D908B71B540AA1329D3F /* [CP] Check Pods Manifest.lock */,
 				2CA9D6D2234C0866002ED627 /* Sources */,
@@ -154,9 +154,9 @@
 			);
 			dependencies = (
 			);
-			name = zenly;
+			name = Footprint;
 			productName = "wallet-1";
-			productReference = 2CA9D6D6234C0866002ED627 /* zenly.app */;
+			productReference = 2CA9D6D6234C0866002ED627 /* Footprint.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -174,7 +174,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2CA9D6D1234C0866002ED627 /* Build configuration list for PBXProject "zenly" */;
+			buildConfigurationList = 2CA9D6D1234C0866002ED627 /* Build configuration list for PBXProject "Footprint" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -187,7 +187,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2CA9D6D5234C0866002ED627 /* zenly */,
+				2CA9D6D5234C0866002ED627 /* Footprint */,
 			);
 		};
 /* End PBXProject section */
@@ -452,7 +452,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2CA9D6D1234C0866002ED627 /* Build configuration list for PBXProject "zenly" */ = {
+		2CA9D6D1234C0866002ED627 /* Build configuration list for PBXProject "Footprint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CA9D6E8234C0867002ED627 /* Debug */,
@@ -461,7 +461,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2CA9D6EA234C0867002ED627 /* Build configuration list for PBXNativeTarget "zenly" */ = {
+		2CA9D6EA234C0867002ED627 /* Build configuration list for PBXNativeTarget "Footprint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CA9D6EB234C0867002ED627 /* Debug */,
