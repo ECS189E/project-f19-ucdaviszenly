@@ -184,7 +184,6 @@ UINavigationControllerDelegate  {
             print("No image found")
             return
         }
-        print("image size = \(image.size)")
         imageTook = image
         self.camera = true
         self.performSegue(withIdentifier: "showMarker", sender: self)

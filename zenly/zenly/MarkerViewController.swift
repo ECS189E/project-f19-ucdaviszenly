@@ -66,8 +66,10 @@ class MarkerViewController: UIViewController {
                 imageView.image = imageTook
                 objectDetection(image: imageTook)
                 deletePhotoBtn.isHidden = false
+                addImageBtn.isEnabled = false
             }else{
                 deletePhotoBtn.isHidden = true
+                addImageBtn.isEnabled = true
             }
             
             let combinePosition = "la\(marker.position.latitude)lo\(marker.position.longitude)"
@@ -116,6 +118,7 @@ class MarkerViewController: UIViewController {
     @IBAction func deletePhotoPressed(_ sender: Any) {
         imageView.image = nil
         deletePhotoBtn.isHidden = true
+        addImageBtn.isEnabled = true
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
@@ -233,6 +236,7 @@ class MarkerViewController: UIViewController {
                     let data = try Data(contentsOf: url)
                     self.imageView.image = UIImage(data: data)
                     self.deletePhotoBtn.isHidden = false
+                    self.addImageBtn.isEnabled = false
                     print("Fetch image data success")
                 }catch let err{
                   print("Error in fetch data:\(err)")
@@ -305,8 +309,10 @@ extension MarkerViewController: UIImagePickerControllerDelegate, UINavigationCon
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             imageView.image = image
+            objectDetection(image: image)
         }
         deletePhotoBtn.isHidden = false
+        addImageBtn.isEnabled = false
         dismiss(animated: true, completion: nil)
         
     }
