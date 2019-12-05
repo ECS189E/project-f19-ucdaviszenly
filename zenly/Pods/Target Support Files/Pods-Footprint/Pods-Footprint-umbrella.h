@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_zenlyVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_zenlyVersionString[];
+FOUNDATION_EXPORT double Pods_FootprintVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_FootprintVersionString[];
 

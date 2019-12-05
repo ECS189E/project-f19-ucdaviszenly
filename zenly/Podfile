@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-target 'zenly' do
+target 'Footprint' do
   pod 'PhoneNumberKit'
   pod 'GoogleMaps'
   pod 'Firebase/Core'
@@ -11,4 +11,4 @@ target 'zenly' do
   # https://firebase.google.com/docs/ios/setup#available-pods
 end
 
-workspace 'zenly'
+workspace 'Footprint'

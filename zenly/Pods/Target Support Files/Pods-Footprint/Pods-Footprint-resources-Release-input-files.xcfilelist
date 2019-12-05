@@ -1,4 +1,4 @@
-${PODS_ROOT}/Target Support Files/Pods-zenly/Pods-zenly-resources.sh
+${PODS_ROOT}/Target Support Files/Pods-Footprint/Pods-Footprint-resources.sh
 ${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle
 ${PODS_ROOT}/PhoneNumberKit/PhoneNumberKit/Resources/PhoneNumberMetadata.json
 ${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/gRPCCertificates-Cpp.bundle

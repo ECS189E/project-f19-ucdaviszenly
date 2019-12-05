@@ -1,6 +1,0 @@
-module Pods_zenly {
-  umbrella header "Pods-zenly-umbrella.h"
-
-  export *
-  module * { export * }
-}
