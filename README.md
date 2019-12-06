@@ -10,4 +10,4 @@ Users can also have a review of their diaries by preesing the Calender button.
 A machine learning model is imported once the user uploads the picture. It will auto indicate the objects in the picture which simplify the process of making a diary.
 
 ## Contribution
-Lanqing Cheng: Created and implemented map view, marker view, and camera button functionality. Also helped with event list view.
+Lanqing Cheng: Implemented map view, created marker view, and implemented camera button functionality. Implemented functions that show the selected marker's address, show the user location,allow user to pick a icon of markers, and allow user to use camera to create marker at current location. Also helped with deleting markers founction of event list view. 
