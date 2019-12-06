@@ -8,3 +8,6 @@ Users can also have a review of their diaries by preesing the Calender button.
 
 ## Magical experience
 A machine learning model is imported once the user uploads the picture. It will auto indicate the objects in the picture which simplify the process of making a diary.
+
+## Contribution
+Lanqing Cheng: Created and implemented map view, marker view, and camera button functionality. Also helped with event list view.
