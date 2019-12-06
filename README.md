@@ -15,3 +15,5 @@ Lanqing Cheng: Implemented map view, created marker view, and implemented camera
 Zirong Yu: Implemented all functions related to database and cloud storage: upload, download, create, delete datas from database. Implemented the details of Marker's VC: setup title, content, images and buttons in the Markerview. Implement the function to load markers on the map. Participate in eventlist view and ui as well. 
 
 Jiaxin Zhao: Implemented the event list so that user can see the list of their diaries and after choose the specific diary, it will show the marker view of that diary. Helped with set up database and implement functions related to database. Choose icon and design UI. 
+
+Niu Shang: Implemented the functionality that adding correlated tags about the photos that users upload or take by the camera. Choosing and adding the machine learning model into the app to do object detection when needed. Using the global dispatch queue to ensure smooth app flow. Repeatedly testing the app to find the bugs and fix them.
